@@ -76,24 +76,6 @@ public class SiteDO extends BaseDO {
      */
     private String favicon;
     /**
-     * Site status.
-     *
-     * @since 1.0.0
-     */
-    private String siteStatus;
-    /**
-     * Site theme for PC.
-     *
-     * @since 1.0.0
-     */
-    private String sitePcTheme;
-    /**
-     * Site theme for mobile.
-     *
-     * @since 1.0.0
-     */
-    private String siteH5Theme;
-    /**
      * Site SEO title.
      *
      * @since 1.0.0

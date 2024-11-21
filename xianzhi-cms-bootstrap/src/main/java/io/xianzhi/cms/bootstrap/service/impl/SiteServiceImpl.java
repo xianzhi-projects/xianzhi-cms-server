@@ -16,6 +16,7 @@
 
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.boot.oss.OssProcessor;
 import io.xianzhi.cms.bootstrap.business.SiteBusiness;
 import io.xianzhi.cms.bootstrap.business.UserBusiness;
 import io.xianzhi.cms.bootstrap.dao.dataobj.SiteDO;
@@ -28,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 
@@ -58,6 +60,11 @@ public class SiteServiceImpl implements SiteService {
     private final UserBusiness userBusiness;
 
     /**
+     * Oss processor for file storage
+     */
+    private final OssProcessor ossProcessor;
+
+    /**
      * Creates a new site.
      *
      * @param siteDTO The site data to be created.
@@ -65,9 +72,13 @@ public class SiteServiceImpl implements SiteService {
      * @since 1.0.0
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String createNewSite(SiteDTO siteDTO) {
         SiteDO site = checkedSiteDTO(siteDTO);
         siteMapper.insert(site);
+        // Create a bucket for the site in the OSS
+        ossProcessor.createBucket("cms:" + site.getId());
+        log.info("create site success,site id:{},site bucketName:{}", site.getId(), "cms:" + site.getId());
         return site.getId();
     }
 
