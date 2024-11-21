@@ -63,7 +63,7 @@ public class SiteVO implements Serializable {
      *
      * @since 1.0.0
      */
-    private UserVO siteOwner;
+    private UserVO owner;
 
     /**
      * Site organization.
