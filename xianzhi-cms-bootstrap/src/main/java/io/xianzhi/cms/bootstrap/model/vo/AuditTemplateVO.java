@@ -21,9 +21,9 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Represents the view object for a organization.
+ * Represents the view object for a auditTemplate.
  * <p>
- * This class is used to encapsulate the organization data that is returned to the client or front-end
+ * This class is used to encapsulate the auditTemplate data that is returned to the client or front-end
  * in the form of a response. It may contain additional formatting or data structure to fit the
  * needs of the user interface.
  *
@@ -31,5 +31,5 @@ import java.io.Serializable;
  * @since 1.0.0
  */
 @Data
-public class OrganizationVO implements Serializable {
+public class AuditTemplateVO implements Serializable {
 }

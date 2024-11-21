@@ -14,22 +14,24 @@
  * limitations under the License.
  */
 
-package io.xianzhi.cms.bootstrap.model.vo;
+package io.xianzhi.cms.bootstrap.model.page;
 
+import io.xianzhi.core.base.Page;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
 /**
- * Represents the view object for a organization.
+ * Pagination query conditions for auditTemplate information.
  * <p>
- * This class is used to encapsulate the organization data that is returned to the client or front-end
- * in the form of a response. It may contain additional formatting or data structure to fit the
- * needs of the user interface.
+ * This class extends the custom {@link Page} class to include pagination details and query conditions.
+ * </p>
  *
  * @author Max
  * @since 1.0.0
  */
 @Data
-public class OrganizationVO implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class AuditTemplatePage extends Page implements Serializable {
 }
