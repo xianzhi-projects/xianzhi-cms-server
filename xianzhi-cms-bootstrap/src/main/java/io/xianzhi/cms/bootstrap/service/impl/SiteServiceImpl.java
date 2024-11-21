@@ -23,11 +23,13 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.SiteDO;
 import io.xianzhi.cms.bootstrap.dao.mapper.SiteMapper;
 import io.xianzhi.cms.bootstrap.model.code.SiteCode;
 import io.xianzhi.cms.bootstrap.model.dto.SiteDTO;
+import io.xianzhi.cms.bootstrap.model.page.SitePage;
+import io.xianzhi.cms.bootstrap.model.vo.SiteVO;
 import io.xianzhi.cms.bootstrap.service.SiteService;
 import io.xianzhi.core.exception.BusinessException;
+import io.xianzhi.core.result.ListResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -83,6 +85,19 @@ public class SiteServiceImpl implements SiteService {
     }
 
     /**
+     * Retrieves a paginated list of sites based on the provided parameters.
+     *
+     * @param sitePage The pagination and filter parameters for querying sites.
+     * @return A paginated list of site
+     * @since 1.0.0
+     */
+    @Override
+    public ListResult<SiteVO> pageSiteList(SitePage sitePage) {
+
+        return null;
+    }
+
+    /**
      * Validates and prepares a SiteDO object from the given SiteDTO.
      * - If the site ID is provided, it retrieves the existing site by ID.
      * - Checks if the site name and domain already exist, throwing exceptions if they do.
@@ -116,7 +131,16 @@ public class SiteServiceImpl implements SiteService {
             log.error("Site owner does not exist: {}", siteDTO.getSiteOwner());
             throw new BusinessException(SiteCode.SITE_OWNER_NOT_EXIST);
         });
-        BeanUtils.copyProperties(siteDTO, site, "id");
+        site.setSiteLogo(siteDTO.getSiteLogo());
+        site.setSiteName(siteDTO.getSiteName());
+        site.setSiteDomain(siteDTO.getSiteDomain());
+        site.setSiteDesc(siteDTO.getSiteDesc());
+        site.setSiteOwner(siteDTO.getSiteOwner());
+        site.setSiteDesc(siteDTO.getSiteDesc());
+        site.setFavicon(siteDTO.getFavicon());
+        site.setSiteSeoDescription(siteDTO.getSiteSeoDescription());
+        site.setSiteSeoTitle(siteDTO.getSiteSeoTitle());
+        site.setSiteSeoKeywords(siteDTO.getSiteSeoKeywords());
         return site;
     }
 

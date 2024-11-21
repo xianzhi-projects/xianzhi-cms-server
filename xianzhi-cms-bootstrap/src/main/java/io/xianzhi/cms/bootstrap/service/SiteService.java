@@ -17,6 +17,9 @@
 package io.xianzhi.cms.bootstrap.service;
 
 import io.xianzhi.cms.bootstrap.model.dto.SiteDTO;
+import io.xianzhi.cms.bootstrap.model.page.SitePage;
+import io.xianzhi.cms.bootstrap.model.vo.SiteVO;
+import io.xianzhi.core.result.ListResult;
 
 /**
  * Service interface for managing site operations.
@@ -33,4 +36,13 @@ public interface SiteService {
      * @since 1.0.0
      */
     String createNewSite(SiteDTO siteDTO);
+
+    /**
+     * Retrieves a paginated list of sites based on the provided parameters.
+     *
+     * @param sitePage The pagination and filter parameters for querying sites.
+     * @return A paginated list of site
+     * @since 1.0.0
+     */
+    ListResult<SiteVO> pageSiteList(SitePage sitePage);
 }

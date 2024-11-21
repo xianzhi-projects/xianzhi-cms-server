@@ -16,6 +16,8 @@
 
 package io.xianzhi.cms.bootstrap.model.vo;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -27,5 +29,70 @@ import java.io.Serializable;
  * @author Max
  * @since 1.0.0
  */
+@Data
 public class SiteVO implements Serializable {
+
+
+    /**
+     * Site ID.
+     *
+     * @since 1.0.0
+     */
+    private String id;
+
+    /**
+     * Site name.
+     *
+     * @since 1.0.0
+     */
+    private String siteName;
+    /**
+     * Site description.
+     *
+     * @since 1.0.0
+     */
+    private String siteDesc;
+    /**
+     * Site logo.
+     *
+     * @since 1.0.0
+     */
+    private String siteLogo;
+    /**
+     * Site owner.
+     *
+     * @since 1.0.0
+     */
+    private UserVO siteOwner;
+    /**
+     * Site domain.
+     *
+     * @since 1.0.0
+     */
+    private String siteDomain;
+    /**
+     * Site favicon.
+     *
+     * @since 1.0.0
+     */
+    private String favicon;
+    /**
+     * Site SEO title.
+     *
+     * @since 1.0.0
+     */
+    private String siteSeoTitle;
+    /**
+     * Site SEO keywords.
+     *
+     * @since 1.0.0
+     */
+    private String siteSeoKeywords;
+    /**
+     * Site SEO description.
+     *
+     * @since 1.0.0
+     */
+    private String siteSeoDescription;
+
 }

@@ -18,7 +18,10 @@ package io.xianzhi.cms.bootstrap.controller;
 
 import io.xianzhi.cms.bootstrap.annotations.AuditLog;
 import io.xianzhi.cms.bootstrap.model.dto.SiteDTO;
+import io.xianzhi.cms.bootstrap.model.page.SitePage;
+import io.xianzhi.cms.bootstrap.model.vo.SiteVO;
 import io.xianzhi.cms.bootstrap.service.SiteService;
+import io.xianzhi.core.result.ListResult;
 import io.xianzhi.core.result.ResponseResult;
 import io.xianzhi.core.validated.Create;
 import lombok.RequiredArgsConstructor;
@@ -52,10 +55,24 @@ public class SiteController {
      *
      * @param siteDTO The site data to be created.
      * @return Site id
+     * @since 1.0.0
      */
     @AuditLog
     @PostMapping(value = "/createNewSite")
     public ResponseResult<String> createNewSite(@RequestBody @Validated(value = Create.class) SiteDTO siteDTO) {
         return ResponseResult.ok(siteService.createNewSite(siteDTO));
+    }
+
+
+    /**
+     * Retrieves a paginated list of sites based on the provided parameters.
+     *
+     * @param sitePage The pagination and filter parameters for querying sites.
+     * @return A paginated list of site  wrapped in a {@link ResponseResult}.
+     * @since 1.0.0
+     */
+    @PostMapping(value = "/pageSiteList")
+    public ResponseResult<ListResult<SiteVO>> pageSiteList(SitePage sitePage) {
+        return ResponseResult.ok(siteService.pageSiteList(sitePage));
     }
 }
