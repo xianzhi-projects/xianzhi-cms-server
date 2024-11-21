@@ -16,7 +16,6 @@
 
 package io.xianzhi.cms.bootstrap.model.vo;
 
-import io.xianzhi.cms.bootstrap.business.OrganizationBusiness;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -66,8 +65,12 @@ public class SiteVO implements Serializable {
      */
     private UserVO siteOwner;
 
-
-    private OrganizationBusiness
+    /**
+     * Site organization.
+     *
+     * @since 1.0.0
+     */
+    private OrganizationVO organization;
     /**
      * Site domain.
      *
