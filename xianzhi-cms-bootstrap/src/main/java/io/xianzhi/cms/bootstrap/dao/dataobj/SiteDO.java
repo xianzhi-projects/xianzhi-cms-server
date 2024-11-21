@@ -14,30 +14,31 @@
  * limitations under the License.
  */
 
-package io.xianzhi.cms.bootstrap.model.dto;
+package io.xianzhi.cms.bootstrap.dao.dataobj;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.xianzhi.mybatis.plus.base.BaseDO;
 import lombok.Data;
-
-import java.io.Serializable;
+import lombok.EqualsAndHashCode;
 
 /**
- * Data Transfer Object for site input parameters.
+ * Site Data Object (DO)
  * <p>
- * This class is used to encapsulate data for site-related operations.
- * </p>
+ * This class represents a Site entity in the application and maps to the 'xz_site' table in the database.
+ * It contains fields that define the site-related information, along with metadata for persistence
+ * and automatic data population for common fields (like created/updated timestamps).
+ * The class extends from BaseDO, which provides common fields such as ID, created/modified by,
+ * and timestamps.
  *
  * @author Max
  * @since 1.0.0
  */
 @Data
-public class SiteDTO implements Serializable {
+@TableName(value = "xz_site")
+@EqualsAndHashCode(callSuper = true)
+public class SiteDO extends BaseDO {
 
-    /**
-     * Unique identifier for the site.
-     *
-     * @since 1.0.0
-     */
-    private String id;
+
     /**
      * Site name.
      *
@@ -110,6 +111,5 @@ public class SiteDTO implements Serializable {
      * @since 1.0.0
      */
     private String siteSeoDescription;
-
 
 }

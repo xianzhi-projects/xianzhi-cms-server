@@ -16,7 +16,15 @@
 
 package io.xianzhi.cms.bootstrap.controller;
 
+import io.xianzhi.cms.bootstrap.annotations.AuditLog;
+import io.xianzhi.cms.bootstrap.model.dto.SiteDTO;
+import io.xianzhi.cms.bootstrap.service.SiteService;
+import io.xianzhi.core.result.ResponseResult;
+import io.xianzhi.core.validated.Create;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,4 +41,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/site")
 public class SiteController {
+
+    /**
+     * Site service.
+     */
+    private final SiteService siteService;
+
+    /**
+     * Creates a new site.
+     *
+     * @param siteDTO The site data to be created.
+     * @return Site id
+     */
+    @AuditLog
+    @PostMapping(value = "/createNewSite")
+    public ResponseResult<String> createNewSite(@RequestBody @Validated(value = Create.class) SiteDTO siteDTO) {
+        return ResponseResult.ok(siteService.createNewSite(siteDTO));
+    }
 }
