@@ -1,2 +1,5 @@
 server:
   port: 9512
+spring:
+  application:
+    name: xianzhi-cms-server

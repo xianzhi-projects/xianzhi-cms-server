@@ -74,6 +74,15 @@ public class SiteDTO implements Serializable {
     @Length(max = 20, message = "cms:site.owner.too.long", groups = {Create.class, Update.class})
     @NotBlank(message = "cms:site.owner.not.blank", groups = {Create.class, Update.class})
     private String siteOwner;
+
+    /**
+     * site organization id.
+     *
+     * @since 1.0.0
+     */
+    @Length(max = 20, message = "cms:site.organizationId.too.long", groups = {Create.class, Update.class})
+    @NotBlank(message = "cms:site.organizationId.not.blank", groups = {Create.class, Update.class})
+    private String organizationId;
     /**
      * Site domain.
      *

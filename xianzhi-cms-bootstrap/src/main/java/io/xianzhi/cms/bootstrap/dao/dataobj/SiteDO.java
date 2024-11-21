@@ -64,6 +64,12 @@ public class SiteDO extends BaseDO {
      */
     private String siteOwner;
     /**
+     * site organization id.
+     *
+     * @since 1.0.0
+     */
+    private String organizationId;
+    /**
      * Site domain.
      *
      * @since 1.0.0
