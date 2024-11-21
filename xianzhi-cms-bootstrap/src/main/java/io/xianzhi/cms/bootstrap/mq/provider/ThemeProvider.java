@@ -16,9 +16,19 @@
 
 package io.xianzhi.cms.bootstrap.mq.provider;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 /**
+ * Provides functionality to send messages related to themes to a message queue.
+ * This class encapsulates MQ interaction logic for theme-related events.
+ *
  * @author Max
  * @since 1.0.0
  */
+@Slf4j
+@Component
+@RequiredArgsConstructor
 public class ThemeProvider {
 }
