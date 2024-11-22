@@ -34,7 +34,7 @@ importers:
         specifier: ^20.1.4
         version: 20.1.4
       '@types/node':
-        specifier: ^20.16.11
+        specifier: ^20.17.6
         version: 20.17.6
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
