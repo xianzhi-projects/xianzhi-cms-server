@@ -19,6 +19,9 @@ package io.xianzhi.cms.bootstrap.dao.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.xianzhi.cms.bootstrap.dao.dataobj.ResourceDO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Optional;
 
 /**
  * Mapper interface for managing resource entities.
@@ -37,4 +40,15 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ResourceMapper extends BaseMapper<ResourceDO> {
+
+    /**
+     * Retrieves a specific resource based on its unique identifier from the database.
+     * This method queries the database to fetch the resource matching the provided ID.
+     *
+     * @param resourceId the unique identifier of the resource to be retrieved
+     * @return an {@link Optional} containing the resource entity ({@link ResourceDO})
+     * if the resource exists in the database; otherwise, an empty {@link Optional} is returned
+     * @since 1.0.0
+     */
+    Optional<ResourceDO> selectResourceById(@Param("resourceId") String resourceId);
 }

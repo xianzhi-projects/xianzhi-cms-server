@@ -16,10 +16,14 @@
 
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.cms.bootstrap.model.dto.ResourceDTO;
+import io.xianzhi.cms.bootstrap.model.vo.ResourceVO;
 import io.xianzhi.cms.bootstrap.service.ResourceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Implementation of the resource service interface.
@@ -32,4 +36,38 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ResourceServiceImpl implements ResourceService {
+
+
+
+    /**
+     * Create a new resource.
+     *
+     * @param resourceDTO resource data
+     * @return resource ID
+     */
+    @Override
+    public String createResource(ResourceDTO resourceDTO) {
+        return "";
+    }
+
+    /**
+     * Update the resource.
+     *
+     * @param resourceDTO resource data
+     */
+    @Override
+    public void updateResource(ResourceDTO resourceDTO) {
+
+    }
+
+    /**
+     * Retrieves all system resource information and converts it into a tree structure.
+     *
+     * @return resources structured as a tree.
+     * @since 1.0.0
+     */
+    @Override
+    public List<ResourceVO> tree() {
+        return List.of();
+    }
 }
