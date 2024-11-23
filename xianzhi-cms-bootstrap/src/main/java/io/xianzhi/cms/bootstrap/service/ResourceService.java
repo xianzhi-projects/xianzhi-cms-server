@@ -7,32 +7,41 @@ import java.util.List;
 
 /**
  * 资源接口
+ *
  * @author Max
  * @since 1.0.0
  */
 public interface ResourceService {
     /**
-     * Create a new resource.
+     * 新增资源信息
      *
-     * @param resourceDTO resource data
-     * @return resource ID
+     * @param resourceDTO 资源信息入参
+     * @return 资源ID
      * @since 1.0.0
      */
     String createResource(ResourceDTO resourceDTO);
 
     /**
-     * Update the resource.
+     * 修改资源
      *
-     * @param resourceDTO resource data
+     * @param resourceDTO 资源信息入参
      * @since 1.0.0
      */
     void updateResource(ResourceDTO resourceDTO);
 
     /**
-     * Retrieves all system resource information and converts it into a tree structure.
+     * 查询系统资源树
      *
-     * @return resources structured as a tree.
+     * @return 资源树信息
      * @since 1.0.0
      */
     List<ResourceVO> tree();
+
+    /**
+     * 获取当前用户的资源信息
+     *
+     * @return 当前用户资源信息
+     * @since 1.0.0
+     */
+    List<ResourceVO> getCurrentUserResource();
 }

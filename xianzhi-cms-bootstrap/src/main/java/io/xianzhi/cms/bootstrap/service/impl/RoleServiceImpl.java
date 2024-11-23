@@ -16,6 +16,7 @@
 
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.cms.bootstrap.model.dto.RoleDTO;
 import io.xianzhi.cms.bootstrap.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,4 +31,14 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RoleServiceImpl implements RoleService {
+    /**
+     * 新增角色
+     *
+     * @param roleDTO 角色信息入参
+     * @return 角色ID
+     */
+    @Override
+    public String createRole(RoleDTO roleDTO) {
+        return "";
+    }
 }

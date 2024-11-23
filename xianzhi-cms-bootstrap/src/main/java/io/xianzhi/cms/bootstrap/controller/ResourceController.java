@@ -83,4 +83,15 @@ public class ResourceController {
     public ResponseResult<List<ResourceVO>> tree() {
         return ResponseResult.ok(resourceService.tree());
     }
+
+    /**
+     * 查询当前用户的资源信息
+     *
+     * @return 当前用户的资源信息
+     * @since 1.0.0
+     */
+    @GetMapping("/getCurrentUserResource")
+    public ResponseResult<List<ResourceVO>> getCurrentUserResource() {
+        return ResponseResult.ok(resourceService.getCurrentUserResource());
+    }
 }

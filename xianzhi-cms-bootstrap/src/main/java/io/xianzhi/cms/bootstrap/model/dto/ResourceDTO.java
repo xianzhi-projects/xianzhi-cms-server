@@ -16,7 +16,9 @@
 
 package io.xianzhi.cms.bootstrap.model.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
 
@@ -28,4 +30,15 @@ import java.io.Serializable;
  */
 @Data
 public class ResourceDTO implements Serializable {
+
+
+    /**
+     * 资源信息ID
+     */
+    @Length(max = 20, message = "cms:resource:id:too:long")
+    @NotBlank(message = "cms:resource:id:not:blank")
+    private String id;
+
+
+
 }
