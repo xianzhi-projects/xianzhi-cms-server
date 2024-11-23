@@ -16,7 +16,12 @@
 
 package io.xianzhi.cms.bootstrap.controller;
 
+import io.xianzhi.cms.bootstrap.model.dto.AuditTemplateDTO;
+import io.xianzhi.core.result.ResponseResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,4 +35,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/auditTemplate")
 public class AuditTemplateController {
+
+    /**
+     * 创建审计日志模板
+     *
+     * @param auditTemplateDTO 审计日志模板信息
+     * @return 模板ID
+     * @since 1.0.0
+     */
+    @PostMapping("/createAuditTemplate")
+    public ResponseResult<String> createAuditTemplate(@RequestBody @Validated AuditTemplateDTO auditTemplateDTO) {
+        return ResponseResult.ok();
+    }
 }

@@ -16,7 +16,10 @@
 
 package io.xianzhi.cms.bootstrap.controller;
 
+import io.xianzhi.cms.bootstrap.model.dto.AdvertisementDTO;
+import io.xianzhi.core.result.ResponseResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,4 +33,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/advertisement")
 public class AdvertisementController {
+
+    /**
+     * 新增广告
+     *
+     * @param advertisementDTO 广告信息
+     * @return 广告ID
+     * @since 1.0.0
+     */
+    @PostMapping("/createAdvertisement")
+    public ResponseResult<String> createAdvertisement(AdvertisementDTO advertisementDTO) {
+        return ResponseResult.ok("createAdvertisement");
+    }
 }

@@ -16,7 +16,12 @@
 
 package io.xianzhi.cms.bootstrap.controller;
 
+import io.xianzhi.cms.bootstrap.model.dto.ColumnDTO;
+import io.xianzhi.core.result.ResponseResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,4 +35,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/column")
 public class ColumnController {
+    /**
+     * 创建栏目
+     *
+     * @param columnDTO 栏目信息入参
+     * @return 栏目ID
+     * @since 1.0.0
+     */
+    @PostMapping("/createColumn")
+    public ResponseResult<String> createColumn(@RequestBody @Validated ColumnDTO columnDTO) {
+        return ResponseResult.ok("create column success");
+    }
 }
