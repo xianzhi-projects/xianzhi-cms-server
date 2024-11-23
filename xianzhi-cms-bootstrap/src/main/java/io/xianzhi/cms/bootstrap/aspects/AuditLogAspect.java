@@ -58,6 +58,7 @@ public class AuditLogAspect {
      */
     @Around(value = "auditLogAnnotation(auditLog)", argNames = "joinPoint,auditLog")
     public Object around(ProceedingJoinPoint joinPoint, AuditLog auditLog) throws Throwable {
+
         return joinPoint.proceed();
     }
 }
