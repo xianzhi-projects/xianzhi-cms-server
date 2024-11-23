@@ -16,10 +16,21 @@
 
 <script setup lang="ts">
 
+import Sider from "@/layout/components/Sider.vue";
+import Header from "@/layout/components/Header.vue";
+import Content from "@/layout/components/Content.vue";
+import Footer from "@/layout/components/Footer.vue";
 </script>
 
 <template>
-
+  <a-layout>
+    <Sider/>
+    <a-layout>
+      <Header/>
+      <Content/>
+      <Footer/>
+    </a-layout>
+  </a-layout>
 </template>
 
 <style scoped>

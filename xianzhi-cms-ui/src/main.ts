@@ -18,7 +18,7 @@ import {createPinia} from 'pinia'
 
 import Antd from 'ant-design-vue';
 import App from './App.vue';
-import router from './router'
+import router from './router/index.ts'
 import * as antIcons from '@ant-design/icons-vue'
 
 const app = createApp(App)
