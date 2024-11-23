@@ -17,13 +17,15 @@
 package io.xianzhi.cms.bootstrap.constants;
 
 /**
+ * 站点缓存键常量
+ *
  * @author Max
  * @since 1.0.0
  */
 public interface SiteCacheKeyConstant {
 
     /**
-     * Site information cache key by site id
+     * 站点ID缓存键
      */
     String SITE_INFO_ID = "cms:site:id:%s";
 }

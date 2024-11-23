@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing column operations.
- * <p>
- * This class handles API requests under the "/column" path.
- * </p>
+ * 栏目接口
  *
  * @author Max
  * @since 1.0.0

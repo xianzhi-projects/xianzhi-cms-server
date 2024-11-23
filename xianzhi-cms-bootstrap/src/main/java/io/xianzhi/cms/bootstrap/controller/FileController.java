@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing field operations.
- * <p>
- * This class handles API requests under the "/file" path.
- * </p>
+ * 文件管理接口
  *
  * @author Max
  * @since 1.0.0

@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing payConfig operations.
- * <p>
- * This class handles API requests under the "/payConfig" path.
- * </p>
+ * 支付配置接口
  *
  * @author Max
  * @since 1.0.0

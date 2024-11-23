@@ -29,7 +29,7 @@ import org.springframework.util.StringUtils;
 import java.util.Optional;
 
 /**
- * Handles the business logic related to system resources.
+ * 资源相关业务类
  *
  * @author Max
  * @since 1.0.0
@@ -40,34 +40,34 @@ import java.util.Optional;
 public class ResourceBusiness {
 
     /**
-     * Resource mapper
+     * 资源信息持久层
      */
     private final ResourceMapper resourceMapper;
 
     /**
-     * Retrieves a specific resource based on its unique identifier from the database, or throws an exception if the resource is not found.
+     * 根据资源ID查询资源信息，如果资源不存在则抛出异常
      *
-     * @param resourceId the unique identifier of the resource to be retrieved
-     * @return the resource entity ({@link ResourceDO})
+     * @param resourceId 资源ID
+     * @return 资源实体
      */
     public ResourceDO getResourceByIdOrThrow(String resourceId) {
         return getResourceById(resourceId).orElseThrow(() -> {
-            log.error("Resource not found for ID: {}", resourceId);
-            throw new BusinessException(ResourceCode.RESOURCE_NOT_EXIST);
+            log.error("根据资源ID查询资源信息为空,资源ID: {}", resourceId);
+            return new BusinessException(ResourceCode.RESOURCE_NOT_EXIST);
         });
     }
 
     /**
-     * Retrieves a specific resource based on its unique identifier from the database.
+     * 根据资源ID查询资源信息
      *
-     * @param resourceId the unique identifier of the resource to be retrieved
-     * @return an {@link Optional} containing the resource entity ({@link ResourceDO})
+     * @param resourceId 资源ID
+     * @return 资源信息
      */
     public Optional<ResourceDO> getResourceById(String resourceId) {
         if (StringUtils.hasText(resourceId)) {
             return resourceMapper.selectResourceById(resourceId);
         }
-        log.error("Resource ID is empty or null");
+        log.error("查询资源信息失败,资源ID为空");
         throw new BusinessException(CommonCode.PARAMS_CHECK_FAIL);
     }
 }

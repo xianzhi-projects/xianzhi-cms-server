@@ -22,11 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * Business logic layer for handling organization-related operations.
- * <p>
- * This class contains the core business logic for operations related to organizations, including
- * retrieving, creating, updating, and deleting organization records. It interacts with the
- * {@link OrganizationMapper} and other related services to execute necessary operations.
+ * 组织机构业务类
  *
  * @author Max
  * @since 1.0.0
@@ -37,7 +33,7 @@ import org.springframework.stereotype.Component;
 public class OrganizationBusiness {
 
     /**
-     * Organization data access object (DAO) mapper
+     * 组织机构持久层
      */
     private final OrganizationMapper organizationMapper;
 }

@@ -26,8 +26,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
- * Aspect for handling audit log functionality. This class intercepts methods annotated
- * with @AuditLog and processes them to record audit logs based on the method execution.
+ * 审计日志切面
  *
  * @author Max
  * @since 1.0.0
@@ -39,10 +38,9 @@ import org.springframework.stereotype.Component;
 public class AuditLogAspect {
 
     /**
-     * Defines the pointcut for methods annotated with @AuditLog.
-     * This pointcut is triggered whenever a method with the @AuditLog annotation is called.
+     * 定义切点，匹配所有被{@link AuditLog}注解标记的方法
      *
-     * @param auditLog The audit log annotation applied to the method.
+     * @param auditLog 审计日志注解
      * @since 1.0.0
      */
     @Pointcut("@annotation(auditLog)")
@@ -50,13 +48,12 @@ public class AuditLogAspect {
     }
 
     /**
-     * Defines the around advice that is executed before and after the target method.
-     * It handles audit log processing by wrapping the method execution and capturing logs.
+     * 定义环绕通知，记录审计日志
      *
-     * @param joinPoint The join point provides information about the method being intercepted.
-     * @param auditLog  The audit log annotation containing the log details.
-     * @return The result of the method execution.
-     * @throws Throwable Any exception thrown during the method execution.
+     * @param joinPoint 当前连接点
+     * @param auditLog  审计日志.
+     * @return 方法执行结果
+     * @throws Throwable 如果执行方法报错则直接抛出对应异常.
      * @since 1.0.0
      */
     @Around(value = "auditLogAnnotation(auditLog)", argNames = "joinPoint,auditLog")

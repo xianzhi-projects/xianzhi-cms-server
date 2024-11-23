@@ -17,11 +17,7 @@
 package io.xianzhi.cms.bootstrap.constants;
 
 /**
- * Constants for user-related cache keys.
- * <p>
- * This class contains static constants for cache keys used when storing or retrieving user data from the cache.
- * The constants help maintain consistency across the application, ensuring that the same cache keys are used
- * throughout the codebase, which is particularly useful for caching user information.
+ * 用户缓存键常量
  *
  * @author Max
  * @since 1.0.0
@@ -29,7 +25,7 @@ package io.xianzhi.cms.bootstrap.constants;
 public interface UserCacheKeyConstant {
 
     /**
-     * User information cache key by user id
+     * 用户ID缓存键
      */
     String USER_INFO_ID = "cms:user:id:%s";
 }

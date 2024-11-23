@@ -32,8 +32,7 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Site business processing class
- * Handles the business logic related to sites
+ * 站点业务类
  *
  * @author Max
  * @since 1.0.0
@@ -44,57 +43,61 @@ import java.util.concurrent.TimeUnit;
 public class SiteBusiness {
 
     /**
-     * Site data access object (DAO) mapper
+     * 站点信息持久层
+     *
+     * @since 1.0.0
      */
     private final SiteMapper siteMapper;
 
     /**
-     * Redis processor for caching
+     * 缓存处理
+     *
+     * @since 1.0.0
      */
     private final RedisProcessor redisProcessor;
 
     /**
-     * Retrieves a site by ID or throws an exception if not found
+     * 根据站点ID查询站点信息，如果站点不存在则抛出异常
      *
-     * @param siteId The site ID to retrieve
-     * @return The site data object
+     * @param siteId 站点ID
+     * @return 站点信息
+     * @since 1.0.0
      */
     public SiteDO getSiteByIdOrThrow(String siteId) {
         return getSiteById(siteId).orElseThrow(() -> {
-            log.error("Site not found for ID: {}", siteId);
+            log.error("根据站点ID查询站点信息为空,站点ID: {}", siteId);
             return new BusinessException(SiteCode.SITE_NOT_EXIST);
         });
     }
 
     /**
-     * Retrieves a SiteDO by its ID, first checking the cache and then querying the database if not found.
-     * If the site is not found in the database, it stores an empty SiteDO in cache for a short time
-     * to avoid frequent database lookups.
+     * 通过ID检索SiteDO，首先检查缓存，如果找不到，则查询数据库。
+     * 如果在数据库中找不到该站点，它会在缓存中短时间存储一个空的SiteDO
+     * 以避免频繁的数据库查找。
      *
-     * @param siteId The ID of the site to retrieve.
-     * @return An Optional containing the SiteDO if found, or an empty Optional if not.
-     * @throws BusinessException if the site ID is null or empty.
+     * @param siteId 站点ID
+     * @return 站点信息
+     * @since 1.0.0
      */
     public Optional<SiteDO> getSiteById(String siteId) {
         if (!StringUtils.hasText(siteId)) {
-            log.error("Site ID is empty or null");
+            log.error("根据站点ID查询站点信息失败,站点ID为空");
             throw new BusinessException(CommonCode.PARAMS_CHECK_FAIL);
         }
         String cacheKey = String.format(SiteCacheKeyConstant.SITE_INFO_ID, siteId);
         SiteDO siteDO = redisProcessor.vGet(cacheKey, SiteDO.class);
         if (siteDO == null) {
             Optional<SiteDO> siteOp = siteMapper.selectSiteById(siteId);
-            // If site is found in the database, cache it for future use
+            // 如果数据库存在站点信息
             if (siteOp.isPresent()) {
                 siteDO = siteOp.get();
                 redisProcessor.vSet(cacheKey, siteDO);
             } else {
-                // If site is not found, store an empty SiteDO in cache for a short period
+                // 数据库中也不存在站点
                 siteDO = new SiteDO();
-                redisProcessor.vSet(cacheKey, siteDO, 10L, TimeUnit.SECONDS);  // Cache empty SiteDO to avoid repetitive DB queries
+                redisProcessor.vSet(cacheKey, siteDO, 10L, TimeUnit.SECONDS);
             }
         }
-        // Return the site if found, otherwise an empty Optional
         return StringUtils.hasText(siteDO.getId()) ? Optional.of(siteDO) : Optional.empty();
     }
 }

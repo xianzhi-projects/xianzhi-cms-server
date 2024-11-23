@@ -22,10 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Custom annotation for auditing logs. It is used to record audit logs for operations
- * like create, update, delete, etc.
- * This annotation is typically applied to methods that involve significant changes
- * in the system, such as data modifications.
+ * 审计日志注解，在需要记录审计日志的方法上添加此注解，通常位于controller方法上
  *
  * @author Max
  * @since 1.0.0

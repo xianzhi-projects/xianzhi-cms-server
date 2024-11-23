@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing payment operations.
- * <p>
- * This class handles API requests under the "/payment" path.
- * </p>
+ * 支付接口
  *
  * @author Max
  * @since 1.0.0

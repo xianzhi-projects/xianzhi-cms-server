@@ -31,10 +31,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Controller for managing resource operations.
- * <p>
- * This class handles API requests under the "/resource" path.
- * </p>
+ * 资源管理接口
  *
  * @author Max
  * @since 1.0.0
@@ -45,15 +42,15 @@ import java.util.List;
 public class ResourceController {
 
     /**
-     * Resource service.
+     * 资源服务
      */
     private final ResourceService resourceService;
 
     /**
-     * Create a new resource.
+     * 新增一个资源信息
      *
-     * @param resourceDTO resource data
-     * @return resource ID
+     * @param resourceDTO 资源信息入参
+     * @return 资源 ID
      * @since 1.0.0
      */
     @AuditLog
@@ -63,10 +60,10 @@ public class ResourceController {
     }
 
     /**
-     * Update the resource.
+     * 修改资源
      *
-     * @param resourceDTO resource data
-     * @return resource ID
+     * @param resourceDTO 资源信息入参
+     * @return 响应信息
      * @since 1.0.0
      */
     @AuditLog
@@ -77,9 +74,9 @@ public class ResourceController {
     }
 
     /**
-     * Retrieves all system resource information and converts it into a tree structure.
+     * 查询系统资源树形结构
      *
-     * @return resources structured as a tree.
+     * @return 系统所有资源树形结构
      * @since 1.0.0
      */
     @GetMapping("/tree")

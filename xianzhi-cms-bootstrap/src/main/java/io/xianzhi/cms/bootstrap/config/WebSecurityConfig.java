@@ -41,17 +41,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * Web security configuration for the XianZhi application.
- * <p>
- * This class defines the security policies, authentication mechanisms, and access controls
- * for the application using Spring Security.
- * <p>
- * Key Features:
- * - Configures custom authentication success and failure handlers.
- * - Integrates a JWT authentication filter for token-based security.
- * - Implements stateless session management.
- * - Configures custom access denial and authentication entry point handlers.
- * - Provides a centralized security filter chain definition.
+ * 应用安全配置类
  *
  * @author Max
  * @since 1.0.0
@@ -64,98 +54,94 @@ public class WebSecurityConfig {
 
 
     /**
-     * Security configuration properties.
+     * 安全相关配置
      */
     private final SecurityProperties securityProperties;
 
     /**
-     * Custom authentication success handler.
+     * 认证成功处理
      */
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
 
     /**
-     * Custom authentication failure handler.
+     * 认证失败处理
      */
     private final AuthenticationFailureHandler authenticationFailureHandler;
 
     /**
-     * JWT authentication filter for token-based security.
+     * JWT认证过滤器
      */
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     /**
-     * Handler for access denial scenarios.
+     * 权限不足处理
      */
     private final AccessDeniedHandler accessDeniedHandler;
 
     /**
-     * Entry point for unauthenticated access attempts.
+     * 为授权处理
      */
     private final AuthenticationEntryPoint authenticationEntryPoint;
 
     /**
-     * User authentication service for retrieving user details.
+     * 用户认证接口
      */
     private final UserDetailsService userDetailsService;
 
     /**
-     * Password encoder for hashing and validating passwords.
+     * 密码加密器
      */
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
-     * Configures the security filter chain.
+     * 配置安全过滤器链
      *
-     * @param http HTTP security configuration.
-     * @return Configured {@link SecurityFilterChain}.
-     * @throws Exception if an error occurs during configuration.
+     * @param http {@link HttpSecurity}实例
+     * @return 安全过滤器链
      * @since 1.0.0
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable) // Disable CSRF protection globally.
                 .authorizeHttpRequests(req -> req.requestMatchers(securityProperties.getPermitAllList().toArray(new String[0]))
-                        .permitAll() // Allow requests to white-listed endpoints.
-                        .anyRequest().authenticated()) // All other requests require authentication.
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Use stateless session management.
+                        .permitAll()
+                        .anyRequest().authenticated())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(config -> config.accessDeniedHandler(accessDeniedHandler)
-                        .authenticationEntryPoint(authenticationEntryPoint)) // Configure custom exception handling.
-                .addFilterBefore(jsonAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class) // Add custom authentication filter.
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Add JWT authentication filter.
+                        .authenticationEntryPoint(authenticationEntryPoint))
+                .addFilterBefore(jsonAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .logout(logout -> logout.logoutUrl("/logout")
-                        .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())); // Configure logout behavior.
+                        .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext()));
 
         return http.build();
     }
 
     /**
-     * Creates a custom JSON-based authentication filter.
+     * 创建JSON认证过滤器
      *
-     * @param authenticationManager Authentication manager for handling authentication requests.
-     * @return Configured {@link JsonAuthenticationFilter}.
+     * @param authenticationManager 认证管理器
+     * @return JSON 认证过滤器
      * @since 1.0.0
      */
     public JsonAuthenticationFilter jsonAuthenticationFilter(AuthenticationManager authenticationManager) {
         JsonAuthenticationFilter jsonAuthenticationFilter = new JsonAuthenticationFilter(authenticationManager);
-        jsonAuthenticationFilter.setAuthenticationSuccessHandler(authenticationSuccessHandler); // Set success handler.
-        jsonAuthenticationFilter.setAuthenticationFailureHandler(authenticationFailureHandler); // Set failure handler.
+        jsonAuthenticationFilter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
+        jsonAuthenticationFilter.setAuthenticationFailureHandler(authenticationFailureHandler);
         return jsonAuthenticationFilter;
     }
 
     /**
-     * Configures the authentication manager.
-     * <p>
-     * This manager uses a DAO authentication provider with a custom {@link UserDetailsService}
-     * and a {@link BCryptPasswordEncoder} for password encoding.
+     * 配置认证管理器
      *
-     * @return Configured {@link AuthenticationManager}.
+     * @return Configured 认证管理器
      * @since 1.0.0
      */
     @Bean
     public AuthenticationManager authenticationManager() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService); // Set user details service.
-        provider.setPasswordEncoder(bCryptPasswordEncoder); // Set password encoder.
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(bCryptPasswordEncoder);
         return new ProviderManager(provider);
     }
 }

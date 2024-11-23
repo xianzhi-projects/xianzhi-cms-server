@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing comment operations.
- * <p>
- * This class handles API requests under the "/comment" path.
- * </p>
+ * 评论接口
  *
  * @author Max
  * @since 1.0.0

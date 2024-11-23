@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing auditTemplate operations.
- * <p>
- * This class handles API requests under the "/auditTemplate" path.
- * </p>
+ * 审计日志模板接口
  *
  * @author Max
  * @since 1.0.0

@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing search operations.
- * <p>
- * This class handles API requests under the "/search" path.
- * </p>
+ * 搜索接口
  *
  * @author Max
  * @since 1.0.0
