@@ -22,9 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the weuBo service interface.
- * Handles business logic for weuBo-related operations.
- *
+ * 微博接口实现
  * @author Max
  * @since 1.0.0
  */

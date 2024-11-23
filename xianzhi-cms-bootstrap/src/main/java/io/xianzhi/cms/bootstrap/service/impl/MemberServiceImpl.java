@@ -22,9 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the member service interface.
- * Handles business logic for member-related operations.
- *
+ * 会员接口实现
  * @author Max
  * @since 1.0.0
  */

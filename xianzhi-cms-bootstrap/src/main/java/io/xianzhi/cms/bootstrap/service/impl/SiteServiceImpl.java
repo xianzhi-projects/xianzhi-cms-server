@@ -36,8 +36,7 @@ import org.springframework.util.StringUtils;
 
 
 /**
- * Implementation of the site service interface.
- * Handles business logic for site-related operations.
+ * 站点接口实现
  *
  * @author Max
  * @since 1.0.0
@@ -67,10 +66,10 @@ public class SiteServiceImpl implements SiteService {
     private final OssProcessor ossProcessor;
 
     /**
-     * Creates a new site.
+     * 创建一个新站点
      *
-     * @param siteDTO The site data to be created.
-     * @return Site id
+     * @param siteDTO 站点信息入参
+     * @return 站点ID
      * @since 1.0.0
      */
     @Override
@@ -78,17 +77,17 @@ public class SiteServiceImpl implements SiteService {
     public String createNewSite(SiteDTO siteDTO) {
         SiteDO site = checkedSiteDTO(siteDTO);
         siteMapper.insert(site);
-        // Create a bucket for the site in the OSS
+        // 为站点创建一个OSS存储桶
         ossProcessor.createBucket("cms:" + site.getId());
         log.info("create site success,site id:{},site bucketName:{}", site.getId(), "cms:" + site.getId());
         return site.getId();
     }
 
     /**
-     * Retrieves a paginated list of sites based on the provided parameters.
+     * 查询站点列表
      *
-     * @param sitePage The pagination and filter parameters for querying sites.
-     * @return A paginated list of site
+     * @param sitePage 站点分页查询条件
+     * @return 站点列表
      * @since 1.0.0
      */
     @Override
@@ -98,16 +97,10 @@ public class SiteServiceImpl implements SiteService {
     }
 
     /**
-     * Validates and prepares a SiteDO object from the given SiteDTO.
-     * - If the site ID is provided, it retrieves the existing site by ID.
-     * - Checks if the site name and domain already exist, throwing exceptions if they do.
-     * - Verifies that the site owner exists.
-     * Copies properties from the SiteDTO to the SiteDO, excluding the 'id' field.
+     * 检查站点信息入参
      *
-     * @param siteDTO The site data transfer object to validate and convert.
-     * @return A SiteDO object populated with data from the SiteDTO.
-     * @throws BusinessException if any of the validation checks fail (e.g., site name or domain already exists, site owner does not exist).
-     * @since 1.0.0
+     * @param siteDTO 站点信息入参
+     * @return 站点信息
      */
     private SiteDO checkedSiteDTO(SiteDTO siteDTO) {
         SiteDO site;
@@ -116,20 +109,20 @@ public class SiteServiceImpl implements SiteService {
         } else {
             site = new SiteDO();
         }
-        // Check if the site name already exists
+        // 判断站点名称是否存在
         if (siteMapper.existsSiteBySiteNameAndIdNot(siteDTO.getSiteName(), siteDTO.getId())) {
             log.error("Site name already exists: {},Site id: {}", siteDTO.getSiteName(), site.getId());
             throw new BusinessException(SiteCode.SITE_NAME_EXIST);
         }
-        // Check if the site domain already exists
+        // 判断站点域名是否存在
         if (siteMapper.existsSiteBySiteDomainAndIdNot(siteDTO.getSiteDomain(), siteDTO.getId())) {
             log.error("Site domain already exists: {},Site id: {}", siteDTO.getSiteDomain(), site.getId());
             throw new BusinessException(SiteCode.SITE_DOMAIN_EXIST);
         }
-        // Check if the site owner exists
+        // 检查站点所有者是否存在
         userBusiness.getUserById(siteDTO.getSiteOwner()).orElseThrow(() -> {
             log.error("Site owner does not exist: {}", siteDTO.getSiteOwner());
-            throw new BusinessException(SiteCode.SITE_OWNER_NOT_EXIST);
+            return new BusinessException(SiteCode.SITE_OWNER_NOT_EXIST);
         });
         site.setSiteLogo(siteDTO.getSiteLogo());
         site.setSiteName(siteDTO.getSiteName());

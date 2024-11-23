@@ -22,9 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the field service interface.
- * Handles business logic for field-related operations.
- *
+ * 字段接口实现
  * @author Max
  * @since 1.0.0
  */

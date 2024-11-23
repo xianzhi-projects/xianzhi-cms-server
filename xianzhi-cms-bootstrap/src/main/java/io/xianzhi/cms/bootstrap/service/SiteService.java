@@ -22,26 +22,26 @@ import io.xianzhi.cms.bootstrap.model.vo.SiteVO;
 import io.xianzhi.core.result.ListResult;
 
 /**
- * Service interface for managing site operations.
+ * 站点接口
  *
  * @author Max
  * @since 1.0.0
  */
 public interface SiteService {
     /**
-     * Creates a new site.
+     * 创建一个新站点
      *
-     * @param siteDTO The site data to be created.
-     * @return Site id
+     * @param siteDTO 站点信息入参
+     * @return 站点ID
      * @since 1.0.0
      */
     String createNewSite(SiteDTO siteDTO);
 
     /**
-     * Retrieves a paginated list of sites based on the provided parameters.
+     * 查询站点列表
      *
-     * @param sitePage The pagination and filter parameters for querying sites.
-     * @return A paginated list of site
+     * @param sitePage 站点分页查询条件
+     * @return 站点列表
      * @since 1.0.0
      */
     ListResult<SiteVO> pageSiteList(SitePage sitePage);

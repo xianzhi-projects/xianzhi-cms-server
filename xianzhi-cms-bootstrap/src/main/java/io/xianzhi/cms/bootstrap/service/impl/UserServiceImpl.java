@@ -22,9 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the user service interface.
- * Handles business logic for user-related operations.
- *
+ * 用户接口实现
  * @author Max
  * @since 1.0.0
  */

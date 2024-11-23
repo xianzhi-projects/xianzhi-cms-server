@@ -22,8 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the dict service interface.
- * Handles business logic for dict-related operations.
+ * 字典接口实现
  *
  * @author Max
  * @since 1.0.0

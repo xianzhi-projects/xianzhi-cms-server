@@ -21,8 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * Provides functionality to send messages related to themes to a message queue.
- * This class encapsulates MQ interaction logic for theme-related events.
+ * 主题消息提供者
  *
  * @author Max
  * @since 1.0.0

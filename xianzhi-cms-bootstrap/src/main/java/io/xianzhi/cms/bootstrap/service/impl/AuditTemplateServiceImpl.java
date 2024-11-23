@@ -22,8 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the auditTemplate service interface.
- * Handles business logic for auditTemplate-related operations.
+ * 审计日志模板处理
  *
  * @author Max
  * @since 1.0.0

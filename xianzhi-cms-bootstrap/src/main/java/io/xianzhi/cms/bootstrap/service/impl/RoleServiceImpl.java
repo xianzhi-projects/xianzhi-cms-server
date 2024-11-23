@@ -22,9 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the role service interface.
- * Handles business logic for role-related operations.
- *
+ * 角色接口实现
  * @author Max
  * @since 1.0.0
  */

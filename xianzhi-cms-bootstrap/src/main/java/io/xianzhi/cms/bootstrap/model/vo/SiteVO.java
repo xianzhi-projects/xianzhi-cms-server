@@ -21,11 +21,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * View Object for site information response.
- * <p>
- * This class is used to encapsulate data for returning site-related information to the client.
- * </p>
- *
+ * 站点信息出参
  * @author Max
  * @since 1.0.0
  */
@@ -34,69 +30,69 @@ public class SiteVO implements Serializable {
 
 
     /**
-     * Site ID.
+     * 站点ID
      *
      * @since 1.0.0
      */
     private String id;
 
     /**
-     * Site name.
+     * 站点名称
      *
      * @since 1.0.0
      */
     private String siteName;
     /**
-     * Site description.
+     * 站点描述
      *
      * @since 1.0.0
      */
     private String siteDesc;
     /**
-     * Site logo.
+     * 站点Logo
      *
      * @since 1.0.0
      */
     private String siteLogo;
     /**
-     * Site owner.
+     * 站点负责人
      *
      * @since 1.0.0
      */
     private UserVO owner;
 
     /**
-     * Site organization.
+     * 站点所属机构
      *
      * @since 1.0.0
      */
     private OrganizationVO organization;
     /**
-     * Site domain.
+     * 站点域名
      *
      * @since 1.0.0
      */
     private String siteDomain;
     /**
-     * Site favicon.
+     * 站点 favicon.
      *
      * @since 1.0.0
      */
     private String favicon;
     /**
-     * Site SEO title.
+     * SEO标题
      *
      * @since 1.0.0
      */
     private String siteSeoTitle;
     /**
-     * Site SEO keywords.
+     * SEO关键字
      *
      * @since 1.0.0
      */
     private String siteSeoKeywords;
     /**
-     * Site SEO description.
+     * SEO描述
      *
      * @since 1.0.0
      */

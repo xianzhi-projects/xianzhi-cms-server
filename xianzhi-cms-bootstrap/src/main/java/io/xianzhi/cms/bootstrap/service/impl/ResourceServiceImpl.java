@@ -26,9 +26,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Implementation of the resource service interface.
- * Handles business logic for resource-related operations.
- *
+ * Resource interface implementation
  * @author Max
  * @since 1.0.0
  */

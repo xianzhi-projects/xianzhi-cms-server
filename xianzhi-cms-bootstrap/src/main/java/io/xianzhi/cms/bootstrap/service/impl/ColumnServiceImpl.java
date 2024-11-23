@@ -22,8 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the column service interface.
- * Handles business logic for column-related operations.
+ * 栏目接口实现
  *
  * @author Max
  * @since 1.0.0

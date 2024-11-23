@@ -22,14 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of the {@link OrganizationService} interface.
- * <p>
- * This class provides the business logic and concrete implementations for the organization-related operations.
- * It includes methods for managing organization data such as creating, updating, retrieving, and deleting organization records.
- * The class utilizes a service layer to handle interactions with the persistence layer (such as the database).
- * It is annotated with {@link Service} to indicate it's a service component, and uses {@link RequiredArgsConstructor}
- * to automatically inject required dependencies (e.g., repositories or other services).
- *
+ * 组织接口实现
  * @author Max
  * @since 1.0.0
  */

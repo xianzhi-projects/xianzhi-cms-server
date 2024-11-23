@@ -21,12 +21,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * User information response object
- * <p>
- * This class is used to encapsulate user-related information and return it as data in the API response.
- * It includes basic user details such as user ID, name, email, etc.
- * Implements the {@link Serializable} interface to enable serialization for transmission or storage.
- *
+ * 用户信息出参
  * @author Max
  * @since 1.0.0
  */
