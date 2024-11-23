@@ -24,30 +24,19 @@ import org.apache.ibatis.annotations.Param;
 import java.util.Optional;
 
 /**
- * Mapper interface for managing resource entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link ResourceDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting resource-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
+ * 资源信息持久层
  *
- * @see ResourceDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper
 public interface ResourceMapper extends BaseMapper<ResourceDO> {
 
     /**
-     * Retrieves a specific resource based on its unique identifier from the database.
-     * This method queries the database to fetch the resource matching the provided ID.
+     * 根据资源ID查询资源信息
      *
-     * @param resourceId the unique identifier of the resource to be retrieved
-     * @return an {@link Optional} containing the resource entity ({@link ResourceDO})
-     * if the resource exists in the database; otherwise, an empty {@link Optional} is returned
+     * @param resourceId 资源ID
+     * @return 资源信息
      * @since 1.0.0
      */
     Optional<ResourceDO> selectResourceById(@Param("resourceId") String resourceId);

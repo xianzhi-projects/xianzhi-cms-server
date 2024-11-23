@@ -24,15 +24,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.Optional;
 
 /**
- * Site Mapper Interface
- * <p>
- * This interface serves as a MyBatis Mapper for the `SiteDO` entity, allowing the interaction
- * between the application and the database. It extends from `BaseMapper<SiteDO>`, which provides
- * common methods for basic CRUD operations (Create, Read, Update, Delete) without needing to
- * manually define SQL statements.
- * <p>
- * The `@Mapper` annotation marks this interface as a MyBatis Mapper, allowing it to be
- * recognized and injected into Spring components for database operations.
+ * 站点信息持久层
  *
  * @author Max
  * @since 1.0.0
@@ -41,39 +33,30 @@ import java.util.Optional;
 public interface SiteMapper extends BaseMapper<SiteDO> {
 
     /**
-     * Select a site by its ID.
-     * <p>
-     * This method retrieves a `SiteDO` object from the database based on the provided `siteId`.
-     * It returns an `Optional<SiteDO>`, which allows handling cases where the site might not
-     * be found, avoiding potential `NullPointerException` by explicitly checking for presence or absence.
-     * <p>
-     * The method uses the `siteId` to query the `xz_site` table and returns the corresponding `SiteDO`
-     * entity if found. If no site with the given ID exists, it will return an empty `Optional`.
+     * 根据站点ID查询站点信息
      *
-     * @param siteId The unique identifier of the site to be retrieved.
-     * @return An `Optional<SiteDO>` containing the site data if found, otherwise an empty Optional.
+     * @param siteId 站点ID
+     * @return 站点信息
      * @since 1.0.0
      */
     Optional<SiteDO> selectSiteById(String siteId);
 
     /**
-     * Checks if a site with the given name exists, excluding the site with the specified ID.
-     * This is useful for checking the uniqueness of a site name while ignoring the site with a particular ID.
+     * 判断站点名称是否存在
      *
-     * @param siteName The name of the site to check for.
-     * @param siteId   The ID of the site to exclude from the check.
-     * @return true if a site with the given name exists and has a different ID, false otherwise.
+     * @param siteName 站点名称
+     * @param siteId   站点ID
+     * @return 是否存在
      * @since 1.0.0
      */
     boolean existsSiteBySiteNameAndIdNot(@Param("siteName") String siteName, @Param("siteId") String siteId);
 
     /**
-     * Checks if a site with the given domain exists, excluding the site with the specified ID.
-     * This is useful for checking the uniqueness of a site domain while ignoring the site with a particular ID.
+     * 检查站点域名是否存在
      *
-     * @param siteDomain The domain of the site to check for.
-     * @param siteId     The ID of the site to exclude from the check.
-     * @return true if a site with the given domain exists and has a different ID, false otherwise.
+     * @param siteDomain 站点域名
+     * @param siteId     站点ID
+     * @return 是否存在
      * @since 1.0.0
      */
     boolean existsSiteBySiteDomainAndIdNot(@Param("siteDomain") String siteDomain, @Param("siteId") String siteId);

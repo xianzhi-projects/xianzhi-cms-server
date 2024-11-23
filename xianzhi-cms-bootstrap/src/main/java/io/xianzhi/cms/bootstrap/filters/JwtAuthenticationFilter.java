@@ -28,6 +28,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 /**
+ * JWT 认证过滤器
  * @author Max
  * @since 1.0.0
  */

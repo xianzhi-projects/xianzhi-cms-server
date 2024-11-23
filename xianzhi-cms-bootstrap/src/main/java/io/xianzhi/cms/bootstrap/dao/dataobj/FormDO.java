@@ -22,12 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Entity class for form data.
- * <p>
- * This class maps to the `xz_form` table in the database and represents
- * the persistent data structure for forms. It extends the {@link BaseDO}
- * class to include common fields such as creation and modification timestamps.
- *
+ * 表单实体
  * @author Max
  * @since 1.0.0
  */

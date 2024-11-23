@@ -21,18 +21,8 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.ColumnDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for column data operations.
- *
- * This interface extends the {@link BaseMapper} to provide basic CRUD
- * functionality for the {@link ColumnDO} entity. It facilitates interactions
- * with the database for operations such as querying, inserting, updating, and
- * deleting column records.
- *
- * Annotations:
- * - {@link Mapper}: Marks this interface as a MyBatis Mapper for dependency injection.
- *
- * @see ColumnDO
- * @see BaseMapper
+ * 栏目信息持久层
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

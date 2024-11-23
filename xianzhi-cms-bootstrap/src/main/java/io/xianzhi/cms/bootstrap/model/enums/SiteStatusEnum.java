@@ -20,9 +20,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * Enumeration representing the status of a site.
- * Each status includes a code and a description for better clarity and maintainability.
- *
+ * 站点状态
  * @author Max
  * @since 1.0.0
  */
@@ -33,13 +31,13 @@ public enum SiteStatusEnum {
 
 
     /**
-     * The site is active.
+     * 激活.
      */
     ACTIVE("ACTIVE", "Active"),
 
 
     /**
-     * The site is inactive.
+     * 不活动
      */
     INACTIVE("INACTIVE", "Inactive"),
 

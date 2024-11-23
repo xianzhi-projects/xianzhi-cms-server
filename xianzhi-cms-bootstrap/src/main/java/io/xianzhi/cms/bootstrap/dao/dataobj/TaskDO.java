@@ -22,11 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Entity class for task data.
- * <p>
- * This class maps to the `xz_task` table in the database and represents
- * the persistent data structure for tasks. It extends the {@link BaseDO}
- * class to include common fields such as creation and modification timestamps.
+ * 定时任务持久层
  *
  * @author Max
  * @since 1.0.0

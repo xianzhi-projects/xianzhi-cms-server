@@ -22,11 +22,7 @@ import java.io.Serializable;
 
 
 /**
- * Represents the view object for a column.
- * <p>
- * This class is used to encapsulate the organization data that is returned to the client or front-end
- * in the form of a response. It may contain additional formatting or data structure to fit the
- * needs of the user interface.
+ * 栏目出参
  *
  * @author Max
  * @since 1.0.0

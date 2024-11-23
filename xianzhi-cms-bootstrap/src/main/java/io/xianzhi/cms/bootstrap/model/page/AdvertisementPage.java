@@ -24,10 +24,7 @@ import java.io.Serializable;
 
 
 /**
- * Pagination query conditions for advertisement information.
- * <p>
- * This class extends the custom {@link Page} class to include pagination details and query conditions.
- * </p>
+ * 广告查询条件
  *
  * @author Max
  * @since 1.0.0

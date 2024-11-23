@@ -21,17 +21,8 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.DictDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for dictionary management.
- *
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link DictDO} entities. It enables interactions with the database for handling
- * dictionary-related data, including querying, inserting, updating, and deleting records.
- *
- * Annotations:
- * - {@link Mapper}: Marks this interface as a MyBatis Mapper for use with dependency injection.
- *
- * @see DictDO
- * @see BaseMapper
+ * 字典信息持久层
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

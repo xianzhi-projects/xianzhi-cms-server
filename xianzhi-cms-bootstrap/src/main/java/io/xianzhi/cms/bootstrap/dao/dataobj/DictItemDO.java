@@ -22,12 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Entity class for dictItem data.
- * <p>
- * This class maps to the `xz_dict_item` table in the database and represents
- * the persistent data structure for dictItems. It extends the {@link BaseDO}
- * class to include common fields such as creation and modification timestamps.
- *
+ * 字典项实体
  * @author Max
  * @since 1.0.0
  */

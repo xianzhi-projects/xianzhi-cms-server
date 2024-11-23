@@ -22,11 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Entity class for model data.
- * <p>
- * This class maps to the `xz_model` table in the database and represents
- * the persistent data structure for models. It extends the {@link BaseDO}
- * class to include common fields such as creation and modification timestamps.
+ * 模型实体
  *
  * @author Max
  * @since 1.0.0

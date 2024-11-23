@@ -24,11 +24,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.Optional;
 
 /**
- * Mapper interface for the 'xz_user' table.
- * <p>
- * This interface extends the BaseMapper interface provided by MyBatis Plus to perform CRUD operations on the 'xz_user' table.
- * It allows for operations such as insert, update, delete, and query for user data.
- * The interface works with the UserDO (Data Object) class that represents the 'xz_user' table in the database.
+ * 用户信息持久层
+ *
  *
  * @author Max
  * @since 1.0.0

@@ -25,10 +25,7 @@ import org.hibernate.validator.constraints.Length;
 import java.io.Serializable;
 
 /**
- * Data Transfer Object for site input parameters.
- * <p>
- * This class is used to encapsulate data for site-related operations.
- * </p>
+ * 站点信息入参
  *
  * @author Max
  * @since 1.0.0
@@ -37,7 +34,7 @@ import java.io.Serializable;
 public class SiteDTO implements Serializable {
 
     /**
-     * Unique identifier for the site.
+     * 站点ID
      *
      * @since 1.0.0
      */
@@ -45,7 +42,7 @@ public class SiteDTO implements Serializable {
     @NotBlank(message = "cms:site.id.not.blank", groups = {Update.class})
     private String id;
     /**
-     * Site name.
+     * 站点名称
      *
      * @since 1.0.0
      */
@@ -53,21 +50,21 @@ public class SiteDTO implements Serializable {
     @NotBlank(message = "cms:site.name.not.blank", groups = {Create.class, Update.class})
     private String siteName;
     /**
-     * Site description.
+     * 站点描述
      *
      * @since 1.0.0
      */
     @Length(max = 255, message = "cms:site.desc.too.long", groups = {Create.class, Update.class})
     private String siteDesc;
     /**
-     * Site logo.
+     * 站点logo
      *
      * @since 1.0.0
      */
     @Length(max = 255, message = "cms:site.logo.too.long", groups = {Create.class, Update.class})
     private String siteLogo;
     /**
-     * Site owner.
+     * 站点负责人
      *
      * @since 1.0.0
      */
@@ -76,7 +73,7 @@ public class SiteDTO implements Serializable {
     private String siteOwner;
 
     /**
-     * site organization id.
+     * 站点所属组织ID
      *
      * @since 1.0.0
      */
@@ -84,7 +81,7 @@ public class SiteDTO implements Serializable {
     @NotBlank(message = "cms:site.organizationId.not.blank", groups = {Create.class, Update.class})
     private String organizationId;
     /**
-     * Site domain.
+     * 站点域名
      *
      * @since 1.0.0
      */
@@ -92,7 +89,7 @@ public class SiteDTO implements Serializable {
     @NotBlank(message = "cms:site.domain.not.blank", groups = {Create.class, Update.class})
     private String siteDomain;
     /**
-     * Site favicon.
+     * 站点 favicon.
      *
      * @since 1.0.0
      */
@@ -100,21 +97,21 @@ public class SiteDTO implements Serializable {
     private String favicon;
 
     /**
-     * Site SEO title.
+     * SEO 标题
      *
      * @since 1.0.0
      */
     @Length(max = 255, message = "cms:site.seo.title.too.long", groups = {Create.class, Update.class})
     private String siteSeoTitle;
     /**
-     * Site SEO keywords.
+     * seo 关键字
      *
      * @since 1.0.0
      */
     @Length(max = 255, message = "cms:site.seo.keywords.too.long", groups = {Create.class, Update.class})
     private String siteSeoKeywords;
     /**
-     * Site SEO description.
+     * SEO 描述
      *
      * @since 1.0.0
      */

@@ -22,12 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Entity class for role data.
- * <p>
- * This class maps to the `xz_role` table in the database and represents
- * the persistent data structure for roles. It extends the {@link BaseDO}
- * class to include common fields such as creation and modification timestamps.
- *
+ * 角色信息实体
  * @author Max
  * @since 1.0.0
  */

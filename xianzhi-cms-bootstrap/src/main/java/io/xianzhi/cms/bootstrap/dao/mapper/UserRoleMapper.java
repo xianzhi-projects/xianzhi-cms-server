@@ -21,18 +21,8 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.UserRoleDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for managing userRole entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link UserRoleDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting userRole-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
+ * 用户角色持久层
  *
- * @see UserRoleDO
- * @see BaseMapper
  * @since 1.0.0
  */
 @Mapper

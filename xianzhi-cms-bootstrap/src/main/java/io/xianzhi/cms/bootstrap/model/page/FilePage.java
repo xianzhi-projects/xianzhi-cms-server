@@ -23,11 +23,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * Pagination query conditions for file information.
- * <p>
- * This class extends the custom {@link Page} class to include pagination details and query conditions.
- * </p>
- *
+ * 文件查询条件
  * @author Max
  * @since 1.0.0
  */

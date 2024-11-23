@@ -21,17 +21,8 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.CommentDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for comment data operations.
- *
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link CommentDO} entities. It facilitates database interactions for managing
- * comments, such as retrieving, creating, updating, and deleting comment records.
- *
- * Annotations:
- * - {@link Mapper}: Designates this interface as a MyBatis Mapper for dependency injection.
- *
- * @see CommentDO
- * @see BaseMapper
+ * 评论持久层
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

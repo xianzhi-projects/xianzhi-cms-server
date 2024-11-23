@@ -21,10 +21,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Represents the data transfer object for a dict.
- * <p>
- * This class is used to transfer dict-related information between different layers or components
- * of the application, such as from the API layer to the service layer or vice versa.
+ * 字典入参
  *
  * @author Max
  * @since 1.0.0

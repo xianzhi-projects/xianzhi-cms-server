@@ -22,12 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Entity class for file data.
- * <p>
- * This class maps to the `xz_file` table in the database and represents
- * the persistent data structure for files. It extends the {@link BaseDO}
- * class to include common fields such as creation and modification timestamps.
- *
+ * 字段实体
  * @author Max
  * @since 1.0.0
  */

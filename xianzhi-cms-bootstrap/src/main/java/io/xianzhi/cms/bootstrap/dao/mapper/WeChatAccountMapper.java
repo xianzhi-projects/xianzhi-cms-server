@@ -22,18 +22,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 
 /**
- * Mapper interface for managing weChatAccount entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link WeChatAccountDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting weChatAccount-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
+ * 微信账号持久层
  *
- * @see WeChatAccountDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

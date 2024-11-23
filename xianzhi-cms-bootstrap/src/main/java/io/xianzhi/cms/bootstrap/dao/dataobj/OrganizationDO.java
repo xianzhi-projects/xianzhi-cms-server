@@ -22,11 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Represents an organization in the system.
- * <p>
- * This class maps to the "xz_organization" table and extends {@link BaseDO}.
- * It contains fields related to the organization and provides necessary
- *
+ * 组织机构实体
  * @author Max
  * @since 1.0.0
  */

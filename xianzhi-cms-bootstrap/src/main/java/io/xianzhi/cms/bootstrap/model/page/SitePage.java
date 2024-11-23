@@ -24,11 +24,7 @@ import org.hibernate.validator.constraints.Length;
 import java.io.Serializable;
 
 /**
- * Pagination query conditions for site information.
- * <p>
- * This class extends the custom {@link Page} class to include pagination details and query conditions.
- * </p>
- *
+ * 站点查询条件
  * @author Max
  * @since 1.0.0
  */

@@ -28,17 +28,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * Custom authentication failure handler for the XianZhi system.
- * <p>
- * This class implements the {@link AuthenticationFailureHandler} interface and is triggered
- * when authentication fails (e.g., incorrect credentials). It provides a custom way of handling
- * failed authentication attempts, such as logging the failure, providing a custom error message,
- * or redirecting the user to a different page.
- * <p>
- * The {@link #onAuthenticationFailure(HttpServletRequest, HttpServletResponse, AuthenticationException)}
- * method is called when the authentication attempt fails, allowing for customized handling of
- * the failure event. This could include tracking failed login attempts or notifying the user with
- * a specific error message.
+ * 自定义认证失败处理
  *
  * @since 1.0.0
  */

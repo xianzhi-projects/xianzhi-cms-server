@@ -28,17 +28,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * Custom authentication success handler for the XianZhi system.
- * <p>
- * This class implements the {@link AuthenticationSuccessHandler} interface and is triggered
- * when authentication is successful (e.g., correct credentials). It provides a custom way of handling
- * successful authentication events, such as logging the success, redirecting the user to a specific page,
- * or performing other post-login actions.
- * <p>
- * The {@link #onAuthenticationSuccess(HttpServletRequest, HttpServletResponse, Authentication)}
- * method is called when authentication succeeds, allowing for customized handling of the success event.
- * This could include tracking successful logins, setting user-specific attributes, or redirecting the user
- * to a specific dashboard or homepage.
+ * 自定义认证成功处理
  *
  * @since 1.0.0
  */

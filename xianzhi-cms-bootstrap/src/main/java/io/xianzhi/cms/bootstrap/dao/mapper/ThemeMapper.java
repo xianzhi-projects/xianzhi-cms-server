@@ -21,18 +21,9 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.ThemeDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for managing theme entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link ThemeDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting theme-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
+ * 主题信息持久层
  *
- * @see ThemeDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

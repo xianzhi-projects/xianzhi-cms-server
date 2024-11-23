@@ -21,18 +21,9 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.MemberDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for managing member entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link MemberDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting member-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
+ * 会员信息持久层
  *
- * @see MemberDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

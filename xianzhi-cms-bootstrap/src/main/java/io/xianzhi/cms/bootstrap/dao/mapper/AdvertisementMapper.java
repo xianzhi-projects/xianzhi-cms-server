@@ -21,18 +21,9 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.AdvertisementDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for advertisement data operations.
+ * 广告信息持久层
  *
- * This interface extends the {@link BaseMapper} to provide basic CRUD
- * functionality for the {@link AdvertisementDO} entity. It acts as a
- * bridge between the application and the database, enabling operations
- * such as querying, inserting, updating, and deleting advertisements.
- *
- * Annotations:
- * - {@link Mapper}: Marks this interface as a MyBatis Mapper for dependency injection.
- *
- * @see AdvertisementDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

@@ -23,10 +23,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * Pagination query conditions for member information.
- * <p>
- * This class extends the custom {@link Page} class to include pagination details and query conditions.
- * </p>
+ * 会员查询条件
  *
  * @author Max
  * @since 1.0.0

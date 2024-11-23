@@ -25,15 +25,7 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Component;
 
 /**
- * Custom logout handler for the XianZhi system.
- * <p>
- * This class implements the {@link LogoutHandler} interface and is triggered when a user logs out.
- * It provides a custom way of handling logout events, such as clearing user sessions, logging the event,
- * or performing other necessary cleanup actions when a user logs out of the system.
- * <p>
- * The {@link #logout(HttpServletRequest, HttpServletResponse, Authentication)} method is called when
- * a user logs out, allowing for customized handling of the logout process. This could include things like
- * removing session data, logging the logout event, or redirecting the user to a specific page (such as a login page).
+ * 自定义退出成功处理
  *
  * @since 1.0.0
  */

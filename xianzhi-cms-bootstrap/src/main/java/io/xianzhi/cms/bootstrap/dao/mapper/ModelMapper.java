@@ -21,18 +21,8 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.ModelDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for managing model entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link ModelDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting model-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
- *
- * @see ModelDO
- * @see BaseMapper
+ * 模型信息持久层
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

@@ -21,12 +21,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * View Object (VO) for a role.
- * <p>
- * This class represents the role-related data that is returned to the client in the response.
- * It is typically used to encapsulate the role information in a format suitable for presentation
- * in the user interface, containing only the necessary details to display to the end-user.
- *
+ * 角色信息出参
  * @author Max
  * @since 1.0.0
  */

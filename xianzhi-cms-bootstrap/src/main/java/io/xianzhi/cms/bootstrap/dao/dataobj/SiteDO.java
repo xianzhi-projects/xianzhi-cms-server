@@ -22,13 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Site Data Object (DO)
- * <p>
- * This class represents a Site entity in the application and maps to the 'xz_site' table in the database.
- * It contains fields that define the site-related information, along with metadata for persistence
- * and automatic data population for common fields (like created/updated timestamps).
- * The class extends from BaseDO, which provides common fields such as ID, created/modified by,
- * and timestamps.
+ * 站点信息实体
  *
  * @author Max
  * @since 1.0.0
@@ -40,61 +34,61 @@ public class SiteDO extends BaseDO {
 
 
     /**
-     * Site name.
+     * 站点名称
      *
      * @since 1.0.0
      */
     private String siteName;
     /**
-     * Site description.
+     * 站点描述
      *
      * @since 1.0.0
      */
     private String siteDesc;
     /**
-     * Site logo.
+     * 站点 logo.
      *
      * @since 1.0.0
      */
     private String siteLogo;
     /**
-     * Site owner.
+     * 站点负责人
      *
      * @since 1.0.0
      */
     private String siteOwner;
     /**
-     * site organization id.
+     *组织机构ID
      *
      * @since 1.0.0
      */
     private String organizationId;
     /**
-     * Site domain.
+     * 站点域名
      *
      * @since 1.0.0
      */
     private String siteDomain;
     /**
-     * Site favicon.
+     * 站点 favicon.
      *
      * @since 1.0.0
      */
     private String favicon;
     /**
-     * Site SEO title.
+     * 站点 SEO 标题.
      *
      * @since 1.0.0
      */
     private String siteSeoTitle;
     /**
-     * Site SEO keywords.
+     * 站点 SEO 关键字.
      *
      * @since 1.0.0
      */
     private String siteSeoKeywords;
     /**
-     * Site SEO description.
+     * 站点 SEO 描述.
      *
      * @since 1.0.0
      */

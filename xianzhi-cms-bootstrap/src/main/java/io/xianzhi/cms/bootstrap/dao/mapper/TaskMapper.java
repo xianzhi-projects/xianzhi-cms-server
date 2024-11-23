@@ -21,18 +21,9 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.TaskDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for managing task entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link TaskDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting task-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
+ * 定时任务持久层
  *
- * @see TaskDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

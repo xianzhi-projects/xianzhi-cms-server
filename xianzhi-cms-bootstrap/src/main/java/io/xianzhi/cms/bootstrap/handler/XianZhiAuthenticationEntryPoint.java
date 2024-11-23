@@ -28,17 +28,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * Custom authentication entry point for the XianZhi system.
- * <p>
- * This class implements the {@link AuthenticationEntryPoint} interface to handle
- * unauthorized access attempts to resources. It is invoked when an unauthenticated user
- * tries to access a protected resource, typically returning a custom error response or
- * redirecting the user to a login page.
- * <p>
- * The {@link #commence(HttpServletRequest, HttpServletResponse, AuthenticationException)}
- * method is executed when authentication is required, but the user is not authenticated.
- * This allows the system to send an appropriate response, such as a 401 Unauthorized status
- * with a specific error message or redirect URL.
+ * 自定义未授权处理
  *
  * @since 1.0.0
  */

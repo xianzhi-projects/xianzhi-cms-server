@@ -24,10 +24,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.Optional;
 
 /**
- * Mapper interface for accessing the "xz_organization" table.
- * <p>
- * This interface extends the {@link BaseMapper} and provides methods to perform CRUD operations
- * on the "xz_organization" table. The {@link OrganizationDO} entity represents the data model for this table.
+ * 组织机构持久层
  *
  * @author Max
  * @since 1.0.0
@@ -36,13 +33,10 @@ import java.util.Optional;
 public interface OrganizationMapper extends BaseMapper<OrganizationDO> {
 
     /**
-     * Retrieves an {@link OrganizationDO} by its ID.
-     * <p>
-     * This method checks the database for an organization with the specified ID. If found, it returns
-     * the corresponding {@link OrganizationDO} wrapped in an {@link Optional}. If not found, it returns an empty {@link Optional}.
+     * 根据组织机构ID查询机构信息
      *
-     * @param organizationId The ID of the organization to retrieve.
-     * @return An {@link Optional} containing the {@link OrganizationDO} if found, or an empty {@link Optional} if not.
+     * @param organizationId 机构ID
+     * @return 机构信息
      * @since 1.0.0
      */
     Optional<OrganizationDO> selectOrganizationById(@Param("organizationId") String organizationId);

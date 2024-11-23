@@ -19,19 +19,11 @@ package io.xianzhi.cms.bootstrap.dao.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.xianzhi.cms.bootstrap.dao.dataobj.FormDO;
 import org.apache.ibatis.annotations.Mapper;
+
 /**
- * Mapper interface for managing form entities.
+ * 表单信息持久层
  *
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link FormDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting form-related records.
- *
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- *   with MyBatis and Spring dependency injection.
- *
- * @see FormDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

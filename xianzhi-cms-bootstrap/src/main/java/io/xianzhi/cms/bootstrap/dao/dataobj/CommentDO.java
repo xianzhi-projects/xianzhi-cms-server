@@ -22,12 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Entity class for comment data.
- * <p>
- * This class maps to the `xz_comment` table in the database and represents
- * the persistent data structure for comments. It extends the {@link BaseDO}
- * class to include common fields such as creation and modification timestamps.
- *
+ * 评论实体
  * @author Max
  * @since 1.0.0
  */

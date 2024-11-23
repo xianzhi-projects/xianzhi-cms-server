@@ -21,10 +21,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Represents the data transfer object for a field.
- * <p>
- * This class is used to transfer field-related information between different layers or components
- * of the application, such as from the API layer to the service layer or vice versa.
+ * 字段入参
  *
  * @author Max
  * @since 1.0.0

@@ -21,11 +21,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Data Transfer Object (DTO) for a role.
- *
- * This class is used to transfer role-related data between different layers or systems, such as
- * from the backend to the frontend or between services. It contains the role information that
- * needs to be sent over the network, often used for creating or updating roles.
+ * 角色信息入参
  *
  * @author Max
  * @since 1.0.0

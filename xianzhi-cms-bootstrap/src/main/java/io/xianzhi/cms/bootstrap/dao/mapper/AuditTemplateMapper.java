@@ -21,18 +21,8 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.AuditTemplateDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for audit template data operations.
- *
- * This interface extends the {@link BaseMapper} to provide basic CRUD
- * functionality for the {@link AuditTemplateDO} entity. It facilitates
- * interactions with the database for operations such as querying, inserting,
- * updating, and deleting audit templates.
- *
- * Annotations:
- * - {@link Mapper}: Marks this interface as a MyBatis Mapper for dependency injection.
- *
- * @see AuditTemplateDO
- * @see BaseMapper
+ * 审计日志模板持久层
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

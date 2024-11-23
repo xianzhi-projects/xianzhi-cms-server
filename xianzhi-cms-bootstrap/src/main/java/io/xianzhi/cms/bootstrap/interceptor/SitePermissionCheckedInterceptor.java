@@ -26,16 +26,7 @@ import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
- * Interceptor for checking site permissions.
- * <p>
- * This interceptor is designed to validate if a user or request has the necessary permissions
- * to access a specific site or resource. It integrates with the application's permission
- * management system to ensure secure and authorized access.
- * <p>
- * Use Cases:
- * - Verify user permissions for site-level access.
- * - Block unauthorized requests to restricted resources.
- * - Log or handle invalid access attempts.
+ * 站点权限校验拦截器
  *
  * @author Max
  * @since 1.0.0
@@ -46,7 +37,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 public class SitePermissionCheckedInterceptor implements HandlerInterceptor {
 
     /**
-     * Business service for managing site-related operations.
+     * 站点业务类
      */
     private final SiteBusiness siteBusiness;
 

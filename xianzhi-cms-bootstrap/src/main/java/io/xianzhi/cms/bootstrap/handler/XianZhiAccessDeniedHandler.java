@@ -28,15 +28,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * Handles access denied exceptions in the XianZhi system.
- * <p>
- * This class implements the {@link AccessDeniedHandler} interface to provide custom
- * handling when a user is denied access to a resource. It logs the details of the
- * access denial and can return a custom response to the client.
- * <p>
- * The {@link #handle(HttpServletRequest, HttpServletResponse, AccessDeniedException)} method
- * is invoked when an access-denied exception occurs, allowing for a custom response, such as
- * returning a specific HTTP status or a detailed error message.
+ * 自定义权限不足处理
  *
  * @since 1.0.0
  */

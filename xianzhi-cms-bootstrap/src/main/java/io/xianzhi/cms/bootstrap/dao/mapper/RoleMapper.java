@@ -21,18 +21,9 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.RoleDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for managing role entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link RoleDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting role-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
+ * 角色信息持久层
  *
- * @see RoleDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

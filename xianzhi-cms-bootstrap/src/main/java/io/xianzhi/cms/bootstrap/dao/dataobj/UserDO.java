@@ -22,11 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * User Data Object (DO) for the 'xz_user' table.
- * <p>
- * This class represents the data object for the user entity, containing fields for user information.
- * It extends the BaseDO class to inherit common fields such as ID, creation and update details, and deletion flag.
- *
+ * 用户信息实体
  * @author Max
  * @since 1.0.0
  */

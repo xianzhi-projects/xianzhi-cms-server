@@ -17,23 +17,13 @@
 package io.xianzhi.cms.bootstrap.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.xianzhi.cms.bootstrap.dao.dataobj.ModelDO;
 import io.xianzhi.cms.bootstrap.dao.dataobj.OrderDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Mapper interface for managing order entities.
- * <p>
- * This interface extends {@link BaseMapper} to provide CRUD operations for
- * {@link OrderDO} entities. It facilitates database interactions such as
- * querying, inserting, updating, and deleting order-related records.
- * <p>
- * Annotations:
- * - {@link Mapper}: Identifies this interface as a MyBatis Mapper for integration
- * with MyBatis and Spring dependency injection.
+ * 订单信息持久层
  *
- * @see OrderDO
- * @see BaseMapper
+ * @author Max
  * @since 1.0.0
  */
 @Mapper

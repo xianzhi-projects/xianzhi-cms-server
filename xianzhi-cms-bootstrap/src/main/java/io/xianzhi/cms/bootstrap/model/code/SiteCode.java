@@ -28,28 +28,28 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum SiteCode implements Result {
     /**
-     * Site does not exist
+     * 站点不存在
      *
      * @since 1.0.0
      */
     SITE_NOT_EXIST("1000001", false, "cms:site.not.exist"),
 
     /**
-     * Site name already exists
+     * 站点名称已经存在
      *
      * @since 1.0.0
      */
     SITE_NAME_EXIST("1000002", false, "cms:site.name.exist"),
 
     /**
-     * Site domain already exists
+     * 站点域名已经存在
      *
      * @since 1.0.0
      */
     SITE_DOMAIN_EXIST("1000002", false, "cms:site.domain.exist"),
 
     /**
-     * Site owner does not exist
+     * 站点负责人不存在
      *
      * @since 1.0.0
      */
@@ -58,27 +58,24 @@ public enum SiteCode implements Result {
 
 
     /**
-     * The custom status code
-     * This is a non-HTTP status code used for custom application responses.
+     * 自定义响应状态码
      */
     private final String code;
 
     /**
-     * Success flag
-     * Indicates whether the operation was successful or not.
+     * 是否操作成功
      */
     private final boolean success;
 
     /**
-     * Custom message
-     * Provides additional information about the operation.
+     * 自定义提示信息
      */
     private final String message;
 
     /**
-     * Returns a custom status code (non-HTTP).
+     * 返回自定义状态码
      *
-     * @return The custom status code
+     * @return 自定义状态码
      * @since 1.0.0
      */
     @Override
@@ -87,9 +84,9 @@ public enum SiteCode implements Result {
     }
 
     /**
-     * Indicates whether the operation was successful or not.
+     * 表示操作是否成功
      *
-     * @return {@code true} if the operation was successful, {@code false} otherwise
+     * @return {@code true} 表示成功, {@code false} 操作失败
      * @since 1.0.0
      */
     @Override
@@ -98,9 +95,9 @@ public enum SiteCode implements Result {
     }
 
     /**
-     * Returns a custom message providing additional information about the operation.
+     * 返回自定操作提示信息
      *
-     * @return A custom message
+     * @return 自定义提示信息
      * @since 1.0.0
      */
     @Override
