@@ -21,11 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing task operations.
- * <p>
- * This class handles API requests under the "/task" path.
- * </p>
- *
+ * 定时任务接口
  * @author Max
  * @since 1.0.0
  */

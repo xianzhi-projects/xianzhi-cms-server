@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller for managing weiBo operations.
- * <p>
- * This class handles API requests under the "/weiBo" path.
- * </p>
+ * 微博接口
  *
  * @author Max
  * @since 1.0.0

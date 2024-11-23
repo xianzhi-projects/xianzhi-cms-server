@@ -43,15 +43,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class SiteController {
 
     /**
-     * Site service.
+     * 站点服务
      */
     private final SiteService siteService;
 
     /**
-     * Creates a new site.
+     * 创建一个新的站点
      *
-     * @param siteDTO The site data to be created.
-     * @return Site id
+     * @param siteDTO 站点信息入参
+     * @return 站点ID
      * @since 1.0.0
      */
     @AuditLog
@@ -62,14 +62,14 @@ public class SiteController {
 
 
     /**
-     * Retrieves a paginated list of sites based on the provided parameters.
+     * 查询站点列表
      *
-     * @param sitePage The pagination and filter parameters for querying sites.
-     * @return A paginated list of site  wrapped in a {@link ResponseResult}.
+     * @param sitePage 查询站点列表入参
+     * @return 站点列表
      * @since 1.0.0
      */
     @PostMapping(value = "/pageSiteList")
-    public ResponseResult<ListResult<SiteVO>> pageSiteList(SitePage sitePage) {
+    public ResponseResult<ListResult<SiteVO>> pageSiteList(@RequestBody SitePage sitePage) {
         return ResponseResult.ok(siteService.pageSiteList(sitePage));
     }
 }
