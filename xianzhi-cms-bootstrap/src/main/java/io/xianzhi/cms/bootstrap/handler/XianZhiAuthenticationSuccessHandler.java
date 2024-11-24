@@ -16,6 +16,12 @@
 
 package io.xianzhi.cms.bootstrap.handler;
 
+import io.xianzhi.cms.bootstrap.model.XianZhiUserDetails;
+import io.xianzhi.cms.bootstrap.model.vo.TokenVO;
+import io.xianzhi.cms.bootstrap.utils.JwtUtil;
+import io.xianzhi.core.result.ResponseResult;
+import io.xianzhi.core.utils.JSONUtil;
+import io.xianzhi.core.utils.ResponseUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -36,6 +42,14 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class XianZhiAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
+
+    /**
+     * JWT工具类
+     */
+    private final JwtUtil jwtUtil;
+
+
     /**
      * Called when a user has been successfully authenticated.
      *
@@ -46,6 +60,44 @@ public class XianZhiAuthenticationSuccessHandler implements AuthenticationSucces
      */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
+        log.info("认证成功处理，用户信息：{}", JSONUtil.toJSONString(authentication.getPrincipal()));
+        // 构建token
+        TokenVO token = buildTokenVO(authentication);
+        ResponseUtils.responseUtf8(ResponseResult.ok(token), response);
     }
+
+
+    private TokenVO buildTokenVO(Authentication authentication) {
+        TokenVO tokenVO = new TokenVO();
+        XianZhiUserDetails principal = (XianZhiUserDetails) authentication.getPrincipal();
+        String accessToken = jwtUtil.generateToken(principal);
+        String refreshToken = jwtUtil.generateRefreshToken(principal);
+        tokenVO.setAccessToken(accessToken);
+        tokenVO.setId(principal.getId());
+        tokenVO.setRefreshToken(refreshToken);
+        tokenVO.setAvatar(principal.getAvatar());
+        tokenVO.setNickName(principal.getNickName());
+        tokenVO.setDomainAccount(principal.getDomainAccount());
+        tokenVO.setWorkNumber(principal.getWorkNumber());
+        return tokenVO;
+    }
+
+//
+//    /**
+//     * 保存登录日志
+//     *
+//     * @param request        请求
+//     * @param authentication 认证信息
+//     */
+//    private void saveLoginLog(HttpServletRequest request, Authentication authentication) {
+//        LoginLogDO loginLogDO = new LoginLogDO();
+//        logThreadPoolTaskExecutor.execute(() -> {
+//            XianZhiUserDetails userDetails = (XianZhiUserDetails) authentication.getPrincipal();
+//            loginLogDO.setUserId(userDetails.getId());
+//            loginLogDO.setLoginMethod("password");
+//
+//            loginLogMapper.insert(loginLogDO);
+//        });
+//    }
+
 }

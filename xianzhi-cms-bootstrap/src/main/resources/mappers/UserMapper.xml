@@ -24,4 +24,13 @@
         WHERE id = #{userId,jdbcType=VARCHAR}
           AND deleted_flag = 0
     </select>
+
+    <select id="loadAuthUserByAccount" resultType="io.xianzhi.cms.bootstrap.model.AuthUser">
+        select id,nick_name,password,work_number,domain_account,avatar,email,mobile_number,enable_flag
+        from xz_user where deleted_flag = 0 and (
+        work_number = #{account,jdbcType=VARCHAR}
+        or domain_account = #{account,jdbcType=VARCHAR}
+        or email = #{account,jdbcType=VARCHAR}
+        or mobile_number = #{account,jdbcType=VARCHAR})
+    </select>
 </mapper>

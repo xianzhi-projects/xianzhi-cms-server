@@ -53,6 +53,7 @@ public class XianZhiAuthenticationEntryPoint implements AuthenticationEntryPoint
      */
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        log.error("未授权处理，异常信息：{}", authException.getMessage(), authException);
 
     }
 }

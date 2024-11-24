@@ -19,12 +19,12 @@ package io.xianzhi.cms.bootstrap.config;
 import io.xianzhi.boot.security.properties.SecurityProperties;
 import io.xianzhi.cms.bootstrap.filters.JsonAuthenticationFilter;
 import io.xianzhi.cms.bootstrap.filters.JwtAuthenticationFilter;
+import io.xianzhi.cms.bootstrap.provider.XianZhiDaoAuthenticationProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -139,7 +139,7 @@ public class WebSecurityConfig {
      */
     @Bean
     public AuthenticationManager authenticationManager() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        XianZhiDaoAuthenticationProvider provider = new XianZhiDaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         return new ProviderManager(provider);

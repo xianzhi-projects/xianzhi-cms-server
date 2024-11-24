@@ -1,13 +1,21 @@
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.boot.security.code.SecurityCode;
 import io.xianzhi.cms.bootstrap.dao.mapper.UserMapper;
-import io.xianzhi.cms.bootstrap.model.enums.GrantTypeEnum;
+import io.xianzhi.cms.bootstrap.model.AuthUser;
+import io.xianzhi.cms.bootstrap.model.XianZhiUserDetails;
+import io.xianzhi.boot.security.enums.GrantTypeEnum;
 import io.xianzhi.cms.bootstrap.service.XianZhiUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Max
@@ -37,7 +45,28 @@ public class PasswordUserDetailsImpl implements XianZhiUserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        if (!StringUtils.hasText(username)) {
+            throw new UsernameNotFoundException(SecurityCode.USER_NAME_OR_PASSWORD_ERROR.getCode());
+        }
+        AuthUser authUser = userMapper.loadAuthUserByAccount(username);
+        if (null == authUser) {
+            throw new UsernameNotFoundException(SecurityCode.USER_NAME_OR_PASSWORD_ERROR.getCode());
+        }
+        XianZhiUserDetails userDetails = new XianZhiUserDetails();
+        userDetails.setId(authUser.getId());
+        userDetails.setNickName(authUser.getNickName());
+        userDetails.setAvatar(authUser.getAvatar());
+        userDetails.setRealName(authUser.getRealName());
+        userDetails.setEmail(authUser.getEmail());
+        userDetails.setMobileNumber(authUser.getMobileNumber());
+        userDetails.setPassword(authUser.getPassword());
+        userDetails.setWorkNumber(authUser.getWorkNumber());
+        userDetails.setDomainAccount(authUser.getDomainAccount());
+        userDetails.setEnableFla(authUser.getEnableFlag());
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("/user"));
+        userDetails.setAuthorities(authorities);
+        return userDetails;
     }
 
     /**
@@ -48,6 +77,6 @@ public class PasswordUserDetailsImpl implements XianZhiUserDetailsService {
      */
     @Override
     public boolean support(String grantType) {
-        return GrantTypeEnum.PASSWORD.name().equals(grantType);
+        return GrantTypeEnum.PASSWORD.getCode().equals(grantType);
     }
 }

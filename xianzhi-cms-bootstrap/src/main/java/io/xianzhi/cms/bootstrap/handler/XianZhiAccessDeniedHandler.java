@@ -47,6 +47,6 @@ public class XianZhiAccessDeniedHandler implements AccessDeniedHandler {
      */
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-
+        log.error("权限不足处理，异常信息：{}", accessDeniedException.getMessage(), accessDeniedException);
     }
 }

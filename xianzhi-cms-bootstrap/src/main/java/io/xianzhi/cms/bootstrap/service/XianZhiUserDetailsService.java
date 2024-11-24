@@ -11,10 +11,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface XianZhiUserDetailsService extends UserDetailsService {
 
 
+
+
+
     /**
      * 是否支持授权方式
      * @param grantType 授权方式
      * @return 响应信息
      */
     boolean support(String grantType);
+
 }

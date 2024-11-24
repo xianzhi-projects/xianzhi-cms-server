@@ -16,6 +16,9 @@
 
 package io.xianzhi.cms.bootstrap.handler;
 
+import io.xianzhi.boot.security.exception.SecurityException;
+import io.xianzhi.core.result.ResponseResult;
+import io.xianzhi.core.utils.ResponseUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -46,6 +49,10 @@ public class XianZhiAuthenticationFailureHandler implements AuthenticationFailur
      */
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-
+        log.error("认证失败处理，异常信息：{}", exception.getMessage(),exception);
+        if (exception instanceof SecurityException){
+            ResponseUtils.responseUtf8(ResponseResult.fail(((SecurityException) exception).getResult()),response);
+            return;
+        }
     }
 }

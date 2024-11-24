@@ -18,6 +18,7 @@ package io.xianzhi.cms.bootstrap.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.xianzhi.cms.bootstrap.dao.dataobj.UserDO;
+import io.xianzhi.cms.bootstrap.model.AuthUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,7 +26,6 @@ import java.util.Optional;
 
 /**
  * 用户信息持久层
- *
  *
  * @author Max
  * @since 1.0.0
@@ -35,16 +35,20 @@ public interface UserMapper extends BaseMapper<UserDO> {
 
 
     /**
-     * Fetch a user by their ID.
-     * <p>
-     * This method retrieves a `UserDO` entity from the database based on the provided `userId`. It returns an
-     * `Optional<UserDO>` to handle cases where a user with the specified ID does not exist, avoiding potential
-     * `NullPointerException` issues. If a user is found, the `Optional` will contain the `UserDO` entity, otherwise,
-     * it will be empty.
+     * 根据用户ID查询用户信息
      *
-     * @param userId The ID of the user to be retrieved.
-     * @return An `Optional<UserDO>` containing the user if found, or an empty `Optional` if no user with the given ID exists.
+     * @param userId 用户ID
+     * @return 用户信息
      * @since 1.0.0
      */
     Optional<UserDO> selectUserById(@Param("userId") String userId);
+
+
+    /**
+     * 根据工号/域账号/手机号码/邮箱地址查询用户信息
+     *
+     * @param account 工号/域账号/手机号码/邮箱地址
+     * @return 用户信息
+     */
+    AuthUser loadAuthUserByAccount(@Param("account") String account);
 }

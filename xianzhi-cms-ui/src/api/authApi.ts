@@ -13,4 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import http, {ResponseResult} from "@/api/index.ts";
 
+export interface PasswordLoginDTO {
+  account: string;
+  password: string;
+}
+
+export interface TokenVO {
+  accessToken: string;
+  refreshToken: string;
+  avatar: string;
+  nickName: string;
+  realName: string;
+  workNumber: string;
+  email: string;
+  id: string;
+}
+
+
+export function passwordLogin(data: PasswordLoginDTO):Promise<ResponseResult<TokenVO>> {
+  return http.request({
+    url: '/login',
+    method: 'post',
+    data
+  })
+}
