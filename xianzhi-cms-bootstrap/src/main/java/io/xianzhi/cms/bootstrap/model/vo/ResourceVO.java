@@ -19,12 +19,57 @@ package io.xianzhi.cms.bootstrap.model.vo;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 资源信息出参
+ *
  * @author Max
  * @since 1.0.0
  */
 @Data
 public class ResourceVO implements Serializable {
+
+
+    /**
+     * 资源ID
+     */
+    private String id;
+
+    /**
+     * 资源名称
+     */
+    private String resourceName;
+    /**
+     * 资源类型
+     */
+    private String resourceType;
+    /**
+     * 资源描述
+     */
+    private String resourceDesc;
+    /**
+     * 资源路径
+     */
+    private String resourceKey;
+    /**
+     * 菜单排序
+     */
+    private Integer menuSort;
+    /**
+     * 菜单图标
+     */
+    private String menuIcon;
+    /**
+     * 菜单组件
+     */
+    private String menuComponent;
+    /**
+     * 是否显示
+     */
+    private Boolean showFlag;
+    /**
+     * 子集资源
+     */
+    private List<ResourceVO> children;
 }

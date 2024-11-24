@@ -17,16 +17,21 @@
 package io.xianzhi.cms.bootstrap.service.impl;
 
 import io.xianzhi.cms.bootstrap.business.ResourceBusiness;
+import io.xianzhi.cms.bootstrap.context.UserContextHolder;
 import io.xianzhi.cms.bootstrap.dao.dataobj.ResourceDO;
 import io.xianzhi.cms.bootstrap.dao.mapper.ResourceMapper;
 import io.xianzhi.cms.bootstrap.model.dto.ResourceDTO;
 import io.xianzhi.cms.bootstrap.model.vo.ResourceVO;
 import io.xianzhi.cms.bootstrap.service.ResourceService;
+import io.xianzhi.core.code.CommonCode;
+import io.xianzhi.core.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -97,7 +102,16 @@ public class ResourceServiceImpl implements ResourceService {
      */
     @Override
     public List<ResourceVO> getCurrentUserResource() {
-        return List.of();
+        List<ResourceDO> resources;
+        if (UserContextHolder.superAdmin()) {
+            resources = resourceMapper.selectAdminResource();
+        } else {
+            resources = new ArrayList<>();
+        }
+        if (ObjectUtils.isEmpty(resources)) {
+            throw new BusinessException(CommonCode.UNAUTHORIZED);
+        }
+        return resourceBusiness.convertResourceTree(resources);
     }
 
     /**

@@ -19,4 +19,13 @@ public class UserContextHolder extends ContextHolder {
     }
 
 
+    /**
+     * 是否超级管理员
+     *
+     * @return 是否是超级管理员
+     */
+    public static boolean superAdmin() {
+        return getCurrentUserDetails().getWorkNumber().equals("001");
+    }
+
 }

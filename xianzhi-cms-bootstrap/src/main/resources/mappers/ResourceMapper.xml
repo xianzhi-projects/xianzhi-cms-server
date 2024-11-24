@@ -24,4 +24,21 @@
         WHERE id = #{resourceId,jdbcType=VARCHAR}
           AND deleted_flag = 0
     </select>
+
+
+
+    <select id="selectAdminResource" resultType="io.xianzhi.cms.bootstrap.dao.dataobj.ResourceDO">
+        SELECT id,
+               resource_name,
+               resource_key,
+               resource_desc,
+               parent_id,
+               resource_type,
+               menu_icon,
+               menu_sort,
+               menu_component,
+               show_flag
+        FROM xz_resource
+        where deleted_flag = 0
+    </select>
 </mapper>

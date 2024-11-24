@@ -21,6 +21,7 @@ import io.xianzhi.cms.bootstrap.dao.dataobj.ResourceDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -40,4 +41,12 @@ public interface ResourceMapper extends BaseMapper<ResourceDO> {
      * @since 1.0.0
      */
     Optional<ResourceDO> selectResourceById(@Param("resourceId") String resourceId);
+
+    /**
+     * 查询管理员资源信息
+     *
+     * @return 管理员资源信息
+     */
+    List<ResourceDO> selectAdminResource();
+
 }
