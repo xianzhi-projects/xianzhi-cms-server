@@ -91,10 +91,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (xianZhiUserDetails.getWorkNumber().equals("001")){
             xianZhiUserDetails.setAuthorities(new ArrayList<>(Collections.singleton(new SimpleGrantedAuthority("/**"))));
         }
-        UserContextHolder.setContext(xianZhiUserDetails);
-        // 认证成功
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(xianZhiUserDetails, null, null);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        filterChain.doFilter(request, response);
+        try {
+            UserContextHolder.setContext(xianZhiUserDetails);
+            // 认证成功
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(xianZhiUserDetails, null, null);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            filterChain.doFilter(request, response);
+        }finally {
+            UserContextHolder.removeContext();
+        }
     }
 }
