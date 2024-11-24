@@ -73,7 +73,9 @@
 import {ref} from 'vue';
 import {LockOutlined, UserOutlined} from '@ant-design/icons-vue';
 import {message} from 'ant-design-vue';
-import {passwordLogin, type PasswordLoginDTO} from "@/api/authApi.ts";
+import {passwordLogin, type PasswordLoginDTO,TokenVO} from "@/api/authApi.ts";
+import router from "@/router/index.ts";
+import {useUserStore} from "@/stores/modules/user.ts";
 
 const passwordLoginDTO = ref<PasswordLoginDTO>({
   account: '',
@@ -84,8 +86,15 @@ const handleLogin = async () => {
     message.error('请输入用户名和密码');
     return;
   }
-  await passwordLogin(passwordLoginDTO.value)
-  message.success('登录成功！');
+  const result = await passwordLogin(passwordLoginDTO.value);
+  if (result.success) {
+    message.success(result.message);
+    router.push("/dashboard");
+    const userStore = useUserStore();
+    userStore.setUser(result.data as TokenVO);
+    return
+  }
+  message.error(result.message);
 };
 </script>
 

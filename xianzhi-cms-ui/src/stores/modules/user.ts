@@ -14,3 +14,36 @@
  * limitations under the License.
  */
 
+import {defineStore} from "pinia";
+import {computed, ref} from "vue";
+import {TokenVO} from "@/api/authApi.ts";
+
+export const useUserStore = defineStore('user', () => {
+  const tokenInfo = ref<TokenVO>()
+  const isLogin = computed(() => {
+    const user = JSON.parse(localStorage.getItem('token') || '{}')
+    return user && user.accessToken
+  })
+
+  /**
+   * 用户信息
+   */
+  function setUser(token: TokenVO) {
+    tokenInfo.value = token
+    localStorage.setItem('token', JSON.stringify(token))
+  }
+
+  /**
+   * 退出登录
+   */
+  function logout() {
+    tokenInfo.value = undefined
+    localStorage.removeItem('token')
+  }
+
+  function getUser() {
+    return JSON.parse(localStorage.getItem('token') || '{}')
+  }
+
+  return {tokenInfo, setUser, getUser, isLogin, logout}
+})

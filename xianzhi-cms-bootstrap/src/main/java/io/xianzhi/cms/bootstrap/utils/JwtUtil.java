@@ -5,6 +5,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import io.xianzhi.boot.security.code.SecurityCode;
+import io.xianzhi.boot.security.exception.SecurityException;
 import io.xianzhi.cms.bootstrap.model.XianZhiUserDetails;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,6 +54,7 @@ public class JwtUtil {
 
     /**
      * 验证Token是否过期
+     *
      * @param token Token
      * @return boolean
      */
@@ -136,12 +139,19 @@ public class JwtUtil {
      * 从Token中获取所有数据
      */
     private Claims extractAllClaims(String token) {
-        return Jwts
-                .parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+
+            return Jwts
+                    .parserBuilder()
+                    .setSigningKey(getSignInKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (Exception exception) {
+            log.error(exception.getMessage(), exception);
+            throw new SecurityException(SecurityCode.TOKEN_INVALID);
+        }
+
     }
 
     /**

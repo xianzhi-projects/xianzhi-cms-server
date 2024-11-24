@@ -32,10 +32,11 @@ export interface TokenVO {
 }
 
 
-export function passwordLogin(data: PasswordLoginDTO):Promise<ResponseResult<TokenVO>> {
+export function passwordLogin(data: PasswordLoginDTO): Promise<ResponseResult<TokenVO>> {
   return http.request({
     url: '/login',
     method: 'post',
+    params: {"grant_type": "password"},
     data
   })
 }
