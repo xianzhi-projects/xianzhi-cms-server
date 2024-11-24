@@ -17,6 +17,11 @@
 package io.xianzhi.cms.bootstrap.filters;
 
 import io.xianzhi.boot.redis.RedisProcessor;
+import io.xianzhi.boot.security.code.SecurityCode;
+import io.xianzhi.boot.security.exception.SecurityException;
+import io.xianzhi.cms.bootstrap.constants.SecurityCacheConstant;
+import io.xianzhi.cms.bootstrap.context.UserContextHolder;
+import io.xianzhi.cms.bootstrap.model.XianZhiUserDetails;
 import io.xianzhi.cms.bootstrap.utils.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -25,15 +30,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * JWT 认证过滤器
+ *
  * @author Max
  * @since 1.0.0
  */
@@ -66,29 +75,25 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // 获取Token
-        String token = request.getHeader("Authorization");
-        if (!StringUtils.hasText(token) || !token.startsWith("Bearer ")) {
+        String token = request.getHeader(SecurityCacheConstant.TOKEN_HEADER);
+        if (!StringUtils.hasText(token) || !token.startsWith(SecurityCacheConstant.TOKEN_PREFIX)) {
             filterChain.doFilter(request, response);
             return;
 
         }
         token = token.substring(7);
-        if (!jwtUtil.validateToken(token)){
-            filterChain.doFilter(request, response);
-            return;
+        if (jwtUtil.validateToken(token)){
+            throw new SecurityException(SecurityCode.TOKEN_INVALID);
         }
 
-        String  userId = jwtUtil.getId(token);
-        if (!StringUtils.hasText(userId)){
-            filterChain.doFilter(request, response);
-            return;
+        String userId = jwtUtil.getId(token);
+        XianZhiUserDetails xianZhiUserDetails = redisProcessor.vGet(String.format(SecurityCacheConstant.AUTH_INFO, userId), XianZhiUserDetails.class);
+        if (xianZhiUserDetails.getWorkNumber().equals("001")){
+            xianZhiUserDetails.setAuthorities(new ArrayList<>(Collections.singleton(new SimpleGrantedAuthority("/**"))));
         }
-        if (!StringUtils.hasText(userId)){
-            filterChain.doFilter(request, response);
-            return;
-        }
+        UserContextHolder.setContext(xianZhiUserDetails);
         // 认证成功
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userId, null, null);
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(xianZhiUserDetails, null, null);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         filterChain.doFilter(request, response);
     }

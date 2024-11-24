@@ -59,7 +59,8 @@ public class JwtUtil {
      * @return boolean
      */
     public boolean validateToken(String token) {
-        return extractExpiration(token).before(new Date());
+        Date date = extractExpiration(token);
+        return date.before(new Date());
     }
 
 
@@ -117,12 +118,13 @@ public class JwtUtil {
      */
     private String buildToken(Map<String, Object> extraClaims, XianZhiUserDetails userDetails, long expiration) {
         extraClaims.put("id", userDetails.getId());
+        Date expirationTime = new Date(System.currentTimeMillis() + expiration * 60 * 60 * 1000);
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setIssuer("https://xianzhi.io")
                 .setSubject(userDetails.getId())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expiration * 60 * 60))
+                .setExpiration(expirationTime)
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

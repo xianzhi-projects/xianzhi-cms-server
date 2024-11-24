@@ -1,7 +1,10 @@
 package io.xianzhi.cms.bootstrap.provider;
 
+import io.xianzhi.boot.redis.RedisProcessor;
 import io.xianzhi.boot.security.code.SecurityCode;
 import io.xianzhi.boot.security.exception.SecurityException;
+import io.xianzhi.cms.bootstrap.constants.SecurityCacheConstant;
+import io.xianzhi.cms.bootstrap.model.XianZhiUserDetails;
 import io.xianzhi.cms.bootstrap.service.XianZhiUserDetailsService;
 import io.xianzhi.core.utils.SpringUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -97,12 +100,12 @@ public class XianZhiDaoAuthenticationProvider extends AbstractUserDetailsAuthent
         prepareTimingAttackProtection();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String grantType = request.getParameter("grant_type");
-        if (!StringUtils.hasText(grantType)){
+        if (!StringUtils.hasText(grantType)) {
             throw new SecurityException(SecurityCode.GRANT_TYPE_IS_NULL);
         }
         Collection<XianZhiUserDetailsService> values = SpringUtils.getBeansOfType(XianZhiUserDetailsService.class).values();
         Optional<XianZhiUserDetailsService> optional = values.stream()
-                        .filter(service -> service.support(grantType)).findAny();
+                .filter(service -> service.support(grantType)).findAny();
         if (optional.isPresent()) {
             userDetailsService = optional.get();
         } else {
@@ -115,6 +118,12 @@ public class XianZhiDaoAuthenticationProvider extends AbstractUserDetailsAuthent
             if (loadedUser == null) {
                 throw new InternalAuthenticationServiceException(
                         "UserDetailsService returned null, which is an interface contract violation");
+            }
+            Optional<RedisProcessor> opRedisProcessor = SpringUtils.getBeansOfType(RedisProcessor.class).values().stream().findAny();
+            if (opRedisProcessor.isPresent()) {
+                RedisProcessor redisProcessor = opRedisProcessor.get();
+                XianZhiUserDetails xianzhiUserDetails = (XianZhiUserDetails) loadedUser;
+                redisProcessor.vSet(String.format(SecurityCacheConstant.AUTH_INFO, xianzhiUserDetails.getId()),xianzhiUserDetails);
             }
             return loadedUser;
         } catch (UsernameNotFoundException ex) {

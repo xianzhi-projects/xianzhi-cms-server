@@ -1,5 +1,6 @@
 package io.xianzhi.cms.bootstrap.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.xianzhi.core.context.Context;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -74,6 +75,7 @@ public class XianZhiUserDetails implements UserDetails, Context {
     /**
      * 权限信息
      */
+    @JsonIgnore
     private List<SimpleGrantedAuthority> authorities;
 
 
@@ -94,6 +96,7 @@ public class XianZhiUserDetails implements UserDetails, Context {
      * @return the authorities, sorted by natural key (never <code>null</code>)
      */
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.authorities;
     }
@@ -127,6 +130,7 @@ public class XianZhiUserDetails implements UserDetails, Context {
      * <code>false</code> if no longer valid (ie expired)
      */
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -138,6 +142,7 @@ public class XianZhiUserDetails implements UserDetails, Context {
      * @return <code>true</code> if the user is not locked, <code>false</code> otherwise
      */
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
         return true;
     }
@@ -150,6 +155,7 @@ public class XianZhiUserDetails implements UserDetails, Context {
      * <code>false</code> if no longer valid (ie expired)
      */
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
@@ -161,6 +167,7 @@ public class XianZhiUserDetails implements UserDetails, Context {
      * @return <code>true</code> if the user is enabled, <code>false</code> otherwise
      */
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return this.enableFla;
     }

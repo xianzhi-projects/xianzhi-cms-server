@@ -16,6 +16,7 @@
 import type {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import axios, {AxiosError} from 'axios';
 import {message} from "ant-design-vue";
+import {useUserStore} from "@/stores/modules/user.ts";
 
 export interface ResponseResult<T> {
   success: boolean;
@@ -38,7 +39,7 @@ class HttpRequest {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJraWQiOiIwNDgxY2YzNi1lNTc2LTRiZWUtYjhlYS1jZTY3NDgwODM5ZDkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbkB4aWFuemhpLmlvIiwiYXVkIjoieGlhbnpoaSIsIm5iZiI6MTcyNDU4ODU3Nywid29ya051bWJlciI6IjAwMSIsImlzcyI6Imh0dHBzOi8vd3d3LnhpYW56aGkuaW8iLCJpZCI6IjE4Mjc1OTE0NDA5NTU2ODI4MTgiLCJleHAiOjE4OTczODg1NzcsImlhdCI6MTcyNDU4ODU3N30.NFjnkI1N5kxtqUOe82vAoZiml5P_laWAciji81FJ6ce3SGsAqJ_jEUImgVZOr2Hlh0uiJsJ6DOFB1MnEfSjeT7E5fH5_Xni0iciYQ0gAGpNP39b91Ma5XRGZVHjobjAxJJvWjOwFALfL9003F-2WBgwAxosG9XhCbOHtQ28PN0K-LjaMldazuic0hmdxpUuJ4hUrwjO9Ww20pZrjIZS6nu8IbCBuwp_EbNSE43J7QbzAGDh-xeS3HBkSsH3pYI2ZI3jT5X7LLUQBHpOFk9mjS1hB6VG1Bl-KVw2MqTb_xc2E8CRgnwnR9J7TpTQqEWTAcs0zH-A-GhTu-VEK6LCqSg',
+        'Authorization': 'Bearer ' + useUserStore().getUser().accessToken,
         'X-Requested-With': 'XMLHttpRequest',
       },
     };

@@ -17,6 +17,7 @@
 package io.xianzhi.cms.bootstrap.handler;
 
 import io.xianzhi.boot.security.exception.SecurityException;
+import io.xianzhi.core.code.CommonCode;
 import io.xianzhi.core.result.ResponseResult;
 import io.xianzhi.core.utils.ResponseUtils;
 import jakarta.servlet.ServletException;
@@ -57,9 +58,11 @@ public class XianZhiAuthenticationEntryPoint implements AuthenticationEntryPoint
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         log.error("未授权处理，异常信息：{}", authException.getMessage(), authException);
-        if (authException instanceof SecurityException){
+        if (authException instanceof SecurityException) {
             ResponseUtils.responseUtf8(ResponseResult.fail(((SecurityException) authException).getResult()), response);
+            return;
         }
+        ResponseUtils.responseUtf8(ResponseResult.fail(CommonCode.UNAUTHORIZED), response);
 
     }
 }
