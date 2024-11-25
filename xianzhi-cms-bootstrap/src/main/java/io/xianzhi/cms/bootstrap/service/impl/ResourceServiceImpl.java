@@ -23,7 +23,9 @@ import io.xianzhi.cms.bootstrap.dao.mapper.ResourceMapper;
 import io.xianzhi.cms.bootstrap.model.dto.ResourceDTO;
 import io.xianzhi.cms.bootstrap.model.vo.ResourceVO;
 import io.xianzhi.cms.bootstrap.service.ResourceService;
+import io.xianzhi.cms.bootstrap.utils.SiteUtil;
 import io.xianzhi.core.code.CommonCode;
+import io.xianzhi.core.context.ContextHolder;
 import io.xianzhi.core.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -106,6 +108,9 @@ public class ResourceServiceImpl implements ResourceService {
         if (UserContextHolder.superAdmin()) {
             resources = resourceMapper.selectAdminResource();
         } else {
+            String siteId = SiteUtil.getCurrentSiteId();
+            String userId = ContextHolder.getId();
+
             resources = new ArrayList<>();
         }
         if (ObjectUtils.isEmpty(resources)) {

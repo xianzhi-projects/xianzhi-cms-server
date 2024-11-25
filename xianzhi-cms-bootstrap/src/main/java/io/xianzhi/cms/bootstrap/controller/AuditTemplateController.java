@@ -24,6 +24,7 @@ import io.xianzhi.cms.bootstrap.service.AuditTemplateService;
 import io.xianzhi.core.result.ListResult;
 import io.xianzhi.core.result.ResponseResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -56,6 +57,7 @@ public class AuditTemplateController {
      * @since 1.0.0
      */
     @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:admin:createAuditTemplate')")
     @PostMapping("/createAuditTemplate")
     public ResponseResult<String> createAuditTemplate(@RequestBody @Validated AuditTemplateDTO auditTemplateDTO) {
         return ResponseResult.ok(auditTemplateService.createAuditTemplate(auditTemplateDTO));
@@ -69,6 +71,7 @@ public class AuditTemplateController {
      * @since 1.0.0
      */
     @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:admin:updateAuditTemplate')")
     @PostMapping("/updateAuditTemplate")
     public ResponseResult<Object> updateAuditTemplate(@RequestBody @Validated AuditTemplateDTO auditTemplateDTO) {
         auditTemplateService.updateAuditTemplate(auditTemplateDTO);
@@ -83,6 +86,7 @@ public class AuditTemplateController {
      * @since 1.0.0
      */
     @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:admin:deleteAuditTemplate')")
     @PostMapping("/deleteAuditTemplate")
     public ResponseResult<Object> deleteAuditTemplate(@RequestBody List<String> ids) {
         auditTemplateService.deleteAuditTemplate(ids);
@@ -97,6 +101,7 @@ public class AuditTemplateController {
      * @since 1.0.0
      */
     @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:admin:enableAuditTemplate')")
     @PostMapping("/enableAuditTemplate")
     public ResponseResult<Object> enableAuditTemplate(@RequestBody List<String> ids) {
         auditTemplateService.enableAuditTemplate(ids);
@@ -111,6 +116,7 @@ public class AuditTemplateController {
      * @since 1.0.0
      */
     @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:admin:disableAuditTemplate')")
     @PostMapping("/disableAuditTemplate")
     public ResponseResult<Object> disableAuditTemplate(@RequestBody List<String> ids) {
         auditTemplateService.disableAuditTemplate(ids);
@@ -124,6 +130,7 @@ public class AuditTemplateController {
      * @return 审计日志模板列表
      * @since 1.0.0
      */
+    @PreAuthorize("@xz.hasPermission('cms:admin:createAuditTemplate','cms:admin:updateAuditTemplate','cms:admin:deleteAuditTemplate','cms:admin:enableAuditTemplate','cms:admin:disableAuditTemplate')")
     @PostMapping("/pageAuditTemplateList")
     public ResponseResult<ListResult<AuditTemplateVO>> pageAuditTemplateList(AuditTemplatePage auditTemplatePage) {
         return ResponseResult.ok(auditTemplateService.pageAuditTemplateList(auditTemplatePage));

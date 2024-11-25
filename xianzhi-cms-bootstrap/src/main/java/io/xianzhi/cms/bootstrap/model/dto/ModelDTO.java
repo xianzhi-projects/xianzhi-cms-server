@@ -14,24 +14,18 @@
  * limitations under the License.
  */
 
-package io.xianzhi.cms.bootstrap.model.vo;
+package io.xianzhi.cms.bootstrap.model.dto;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- * 内容出参
+ * 模型入参
  *
  * @author Max
  * @since 1.0.0
  */
 @Data
-public class ContentVO implements Serializable {
-
-
-    /**
-     * 归档标识
-     */
-    private Boolean archiveFlag;
+public class ModelDTO implements Serializable {
 }

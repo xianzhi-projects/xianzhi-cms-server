@@ -16,14 +16,13 @@
 
 package io.xianzhi.cms.bootstrap.controller;
 
+import io.xianzhi.cms.bootstrap.annotations.AuditLog;
 import io.xianzhi.cms.bootstrap.model.dto.ColumnDTO;
 import io.xianzhi.core.result.ResponseResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 栏目接口
@@ -42,8 +41,39 @@ public class ColumnController {
      * @return 栏目ID
      * @since 1.0.0
      */
+    @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:column:createColumn')")
     @PostMapping("/createColumn")
     public ResponseResult<String> createColumn(@RequestBody @Validated ColumnDTO columnDTO) {
         return ResponseResult.ok("create column success");
     }
+
+    /**
+     * 修改栏目
+     *
+     * @param columnDTO 栏目信息入参
+     * @return 响应信息
+     * @since 1.0.0
+     */
+    @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:column:updateColumn')")
+    @PostMapping("/updateColumn")
+    public ResponseResult<Object> updateColumn(@RequestBody @Validated ColumnDTO columnDTO) {
+        return ResponseResult.ok();
+    }
+
+    /**
+     * 删除栏目
+     *
+     * @param id 栏目ID
+     * @return 响应信息
+     * @since 1.0.0
+     */
+    @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:column:deletedColumn')")
+    @PostMapping("/deletedColumn/{id}")
+    public ResponseResult<Object> deletedColumn(@PathVariable(value = "id") String id) {
+        return ResponseResult.ok();
+    }
+
 }

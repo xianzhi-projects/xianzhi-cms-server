@@ -14,24 +14,29 @@
  * limitations under the License.
  */
 
-package io.xianzhi.cms.bootstrap.model.vo;
+package io.xianzhi.cms.bootstrap.model.dto;
 
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * 内容出参
+ * 删除内容入参
  *
  * @author Max
  * @since 1.0.0
  */
 @Data
-public class ContentVO implements Serializable {
-
+public class DeletedContentDTO implements Serializable {
 
     /**
-     * 归档标识
+     * 栏目ID
      */
-    private Boolean archiveFlag;
+    private String columnId;
+
+    /**
+     * 内容ID
+     */
+    private List<String> contentIds;
 }

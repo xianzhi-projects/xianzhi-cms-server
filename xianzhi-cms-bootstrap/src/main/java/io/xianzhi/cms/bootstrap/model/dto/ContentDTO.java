@@ -25,4 +25,9 @@ import java.io.Serializable;
  * @since 1.0.0
  */
 public class ContentDTO implements Serializable {
+
+    /**
+     * 栏目ID
+     */
+    private String columnId;
 }

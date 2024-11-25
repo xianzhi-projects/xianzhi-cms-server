@@ -13,25 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const columns = [
+  {
+    title: '模板名称',
+    dataIndex: 'templateName',
+  },
+  {
+    title: '接口地址',
+    dataIndex: 'interfaceUrl',
+  },
 
-package io.xianzhi.cms.bootstrap.model.vo;
+  {
+    title: '模板描述',
+    dataIndex: 'templateDesc',
+  },
+  {
+    title: '操作类型',
+    dataIndex: 'operationType',
+  },
+  {
+    title: '是否启用',
+    dataIndex: 'enableFlag',
+  },
+  {
+    title: '新增时间',
+    dataIndex: 'createAt',
+  },
+  {
+    title: '操作',
+    key: 'operation',
+  },
+]
 
-import lombok.Data;
 
-import java.io.Serializable;
+export {columns}
 
-/**
- * 内容出参
- *
- * @author Max
- * @since 1.0.0
- */
-@Data
-public class ContentVO implements Serializable {
-
-
-    /**
-     * 归档标识
-     */
-    private Boolean archiveFlag;
-}
