@@ -16,6 +16,7 @@
 
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.cms.bootstrap.business.ModelBusiness;
 import io.xianzhi.cms.bootstrap.dao.mapper.ModelMapper;
 import io.xianzhi.cms.bootstrap.model.dto.ModelDTO;
 import io.xianzhi.cms.bootstrap.model.page.ModelPage;
@@ -43,6 +44,11 @@ public class ModelServiceImpl implements ModelService {
      * 模型信息持久层
      */
     private final ModelMapper modelMapper;
+
+    /**
+     * 模型业务类
+     */
+    private final ModelBusiness modelBusiness;
 
     /**
      * 新增模型
