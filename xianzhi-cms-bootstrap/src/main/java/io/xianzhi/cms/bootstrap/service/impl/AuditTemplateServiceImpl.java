@@ -16,10 +16,17 @@
 
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.cms.bootstrap.business.AuditTemplateBusiness;
+import io.xianzhi.cms.bootstrap.model.dto.AuditTemplateDTO;
+import io.xianzhi.cms.bootstrap.model.page.AuditTemplatePage;
+import io.xianzhi.cms.bootstrap.model.vo.AuditTemplateVO;
 import io.xianzhi.cms.bootstrap.service.AuditTemplateService;
+import io.xianzhi.core.result.ListResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 审计日志模板处理
@@ -31,4 +38,79 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuditTemplateServiceImpl implements AuditTemplateService {
+    /**
+     * 审计模板业务类
+     */
+    private final AuditTemplateBusiness auditTemplateBusiness;
+
+
+
+
+    /**
+     * 创建审计日志模板
+     *
+     * @param auditTemplateDTO 审计日志模板信息
+     * @return 模板ID
+     * @since 1.0.0
+     */
+    @Override
+    public String createAuditTemplate(AuditTemplateDTO auditTemplateDTO) {
+        return "";
+    }
+
+    /**
+     * 修改审计日志模板
+     *
+     * @param auditTemplateDTO 审计日志模板信息
+     * @since 1.0.0
+     */
+    @Override
+    public void updateAuditTemplate(AuditTemplateDTO auditTemplateDTO) {
+
+    }
+
+    /**
+     * 删除审计日志模板
+     *
+     * @param ids 审计日志模板ID
+     * @since 1.0.0
+     */
+    @Override
+    public void deleteAuditTemplate(List<String> ids) {
+
+    }
+
+    /**
+     * 启用审计日志模板
+     *
+     * @param ids 审计日志模板ID
+     * @since 1.0.0
+     */
+    @Override
+    public void enableAuditTemplate(List<String> ids) {
+
+    }
+
+    /**
+     * 禁用审计日志模板
+     *
+     * @param ids 审计日志模板ID
+     * @since 1.0.0
+     */
+    @Override
+    public void disableAuditTemplate(List<String> ids) {
+
+    }
+
+    /**
+     * 分页查询审计日志模板列表
+     *
+     * @param auditTemplatePage 分页查询条件
+     * @return 审计日志模板列表
+     * @since 1.0.0
+     */
+    @Override
+    public ListResult<AuditTemplateVO> pageAuditTemplateList(AuditTemplatePage auditTemplatePage) {
+        return null;
+    }
 }
