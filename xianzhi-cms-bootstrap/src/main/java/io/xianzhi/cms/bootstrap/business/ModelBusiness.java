@@ -14,29 +14,30 @@
  * limitations under the License.
  */
 
-package io.xianzhi.cms.bootstrap.dao.mapper;
+package io.xianzhi.cms.bootstrap.business;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.xianzhi.cms.bootstrap.dao.dataobj.ModelDO;
-import org.apache.ibatis.annotations.Mapper;
-
-import java.util.Optional;
+import io.xianzhi.cms.bootstrap.dao.mapper.ModelMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
- * 模型信息持久层
+ * 模型业务类
  *
  * @author Max
  * @since 1.0.0
  */
-@Mapper
-public interface ModelMapper extends BaseMapper<ModelDO> {
-
+@Slf4j
+@Component
+@RequiredArgsConstructor
+public class ModelBusiness {
 
     /**
-     * 根据模型ID查询模型信息
-     *
-     * @param modelId 模型ID
-     * @return 模型信息
+     * 模型信息持久层
      */
-    Optional<ModelDO> selectModelById(String modelId);
+    private final ModelMapper modelMapper;
+
+
+
+
 }

@@ -17,26 +17,15 @@
 package io.xianzhi.cms.bootstrap.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.xianzhi.cms.bootstrap.dao.dataobj.ModelDO;
+import io.xianzhi.cms.bootstrap.dao.dataobj.SiteModelDO;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.Optional;
-
 /**
- * 模型信息持久层
+ * 站点模型持久层
  *
  * @author Max
  * @since 1.0.0
  */
 @Mapper
-public interface ModelMapper extends BaseMapper<ModelDO> {
-
-
-    /**
-     * 根据模型ID查询模型信息
-     *
-     * @param modelId 模型ID
-     * @return 模型信息
-     */
-    Optional<ModelDO> selectModelById(String modelId);
+public interface SiteModelMapper extends BaseMapper<SiteModelDO> {
 }

@@ -14,29 +14,19 @@
  * limitations under the License.
  */
 
-package io.xianzhi.cms.bootstrap.dao.mapper;
+package io.xianzhi.cms.bootstrap.model.page;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.xianzhi.cms.bootstrap.dao.dataobj.ModelDO;
-import org.apache.ibatis.annotations.Mapper;
+import io.xianzhi.core.base.Page;
+import lombok.Data;
 
-import java.util.Optional;
+import java.io.Serializable;
 
 /**
- * 模型信息持久层
+ * 模型查询条件
  *
  * @author Max
  * @since 1.0.0
  */
-@Mapper
-public interface ModelMapper extends BaseMapper<ModelDO> {
-
-
-    /**
-     * 根据模型ID查询模型信息
-     *
-     * @param modelId 模型ID
-     * @return 模型信息
-     */
-    Optional<ModelDO> selectModelById(String modelId);
+@Data
+public class ModelPage extends Page implements Serializable {
 }

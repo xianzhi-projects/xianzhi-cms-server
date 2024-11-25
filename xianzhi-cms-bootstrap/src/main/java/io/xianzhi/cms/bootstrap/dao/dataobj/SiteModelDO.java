@@ -22,45 +22,26 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 模型实体
+ * 站点模型关联实体
  *
  * @author Max
  * @since 1.0.0
  */
 @Data
-@TableName(value = "xz_model")
+@TableName(value = "xz_site_model")
 @EqualsAndHashCode(callSuper = true)
-public class ModelDO extends BaseDO {
+public class SiteModelDO extends BaseDO {
+
 
     /**
-     * 模型名称
+     * 站点ID
      */
-    private String modelName;
-    /**
-     * 模型描述
-     */
-    private String modelDesc;
-    /**
-     * 模型表名
-     */
-    private String modelTableName;
-    /**
-     * 模型类型
-     */
-    private String modelType;
-    /**
-     * 是否启用标识
-     */
-    private Boolean enableFlag;
-    /**
-     * 模型排序
-     */
-    private Integer modelSort;
+    private String siteId;
 
     /**
-     * 公共模型标识
+     * 模型ID
      */
-    private Boolean commonFlag;
+    private String modelId;
 
 
 }
