@@ -16,9 +16,15 @@
 
 package io.xianzhi.cms.bootstrap.controller;
 
+import io.xianzhi.cms.bootstrap.annotations.AuditLog;
+import io.xianzhi.cms.bootstrap.model.dto.OrganizationDTO;
+import io.xianzhi.cms.bootstrap.service.OrganizationService;
+import io.xianzhi.core.result.ResponseResult;
+import io.xianzhi.core.validated.Create;
+import io.xianzhi.core.validated.Update;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 组织机构管理接口
@@ -30,4 +36,48 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/organization")
 public class OrganizationController {
+
+    /**
+     * 组织机构服务
+     */
+    private final OrganizationService organizationService;
+
+    /**
+     * 创建组织机构
+     *
+     * @param organizationDTO 组织机构信息
+     * @return 创建结果
+     * @since 1.0.0
+     */
+    @AuditLog
+    @PostMapping("/createOrganization")
+    public ResponseResult<String> createOrganization(@RequestBody @Validated(value = Create.class) OrganizationDTO organizationDTO) {
+        return ResponseResult.ok("");
+    }
+
+    /**
+     * 更新组织机构
+     *
+     * @param organizationDTO 组织机构信息
+     * @return 更新结果
+     * @since 1.0.0
+     */
+    @AuditLog
+    @PostMapping("/updateOrganization")
+    public ResponseResult<Object> updateOrganization(@RequestBody @Validated(value = Update.class) OrganizationDTO organizationDTO) {
+        return ResponseResult.ok();
+    }
+
+    /**
+     * 删除组织机构
+     *
+     * @param organizationId 组织机构ID
+     * @return 删除结果
+     * @since 1.0.0
+     */
+    @AuditLog
+    @PostMapping("/deletedOrganization/{organizationId}")
+    public ResponseResult<Object> deletedOrganization(@PathVariable(value = "organizationId") String organizationId) {
+        return ResponseResult.ok();
+    }
 }

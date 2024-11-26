@@ -16,9 +16,13 @@
 
 package io.xianzhi.cms.bootstrap.controller;
 
+import io.xianzhi.cms.bootstrap.model.dto.RoleDTO;
+import io.xianzhi.core.result.ResponseResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * 角色管理接口
@@ -30,4 +34,37 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping(value = "/role")
 public class RoleController {
+
+    /**
+     * 创建角色
+     *
+     * @param roleDTO 角色信息
+     * @return 角色ID
+     * @since 1.0.0
+     */
+    public ResponseResult<String> createRole(RoleDTO roleDTO) {
+        return ResponseResult.ok();
+    }
+
+    /**
+     * 更新角色
+     *
+     * @param roleDTO 角色信息
+     * @return 响应信息
+     * @since 1.0.0
+     */
+    public ResponseResult<Object> updateRole(RoleDTO roleDTO) {
+        return ResponseResult.ok();
+    }
+
+    /**
+     * 删除角色
+     *
+     * @param ids 角色ID列表
+     * @return 响应信息
+     * @since 1.0.0
+     */
+    public ResponseResult<Object> deletedRole(List<String> ids) {
+        return ResponseResult.ok();
+    }
 }
