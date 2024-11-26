@@ -16,6 +16,8 @@
 
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.cms.bootstrap.business.ContentBusiness;
+import io.xianzhi.cms.bootstrap.business.ModelBusiness;
 import io.xianzhi.cms.bootstrap.model.dto.ContentDTO;
 import io.xianzhi.cms.bootstrap.model.dto.DeletedContentDTO;
 import io.xianzhi.cms.bootstrap.model.vo.ContentVO;
@@ -34,6 +36,16 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ContentServiceImpl implements ContentService {
+
+    /**
+     * 内容业务类
+     */
+    private final ContentBusiness contentBusiness;
+
+    /**
+     * 模型业务类
+     */
+    private final ModelBusiness modelBusiness;
     /**
      * 创建内容
      *

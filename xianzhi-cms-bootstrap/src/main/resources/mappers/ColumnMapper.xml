@@ -17,4 +17,8 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="io.xianzhi.cms.bootstrap.dao.mapper.ColumnMapper">
+
+    <select id="selectByColumnId" resultType="io.xianzhi.cms.bootstrap.dao.dataobj.ColumnDO">
+        select * from xz_column where id = #{columnId,jdbcType=VARCHAR}
+    </select>
 </mapper>

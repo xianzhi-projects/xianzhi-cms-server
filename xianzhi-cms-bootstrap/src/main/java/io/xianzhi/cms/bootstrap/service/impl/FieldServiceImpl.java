@@ -16,10 +16,14 @@
 
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.cms.bootstrap.model.dto.FieldDTO;
+import io.xianzhi.cms.bootstrap.model.vo.FieldVO;
 import io.xianzhi.cms.bootstrap.service.FieldService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 字段接口实现
@@ -30,4 +34,28 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class FieldServiceImpl implements FieldService {
+
+    /**
+     * 模型ID获取字段信息
+     *
+     * @param modelId 模型ID
+     * @return 字段信息
+     * @since 1.0.0
+     */
+    @Override
+    public List<FieldVO> getFieldsByModelId(String modelId) {
+        return List.of();
+    }
+
+    /**
+     * 保存字段
+     *
+     * @param modelId 模型ID
+     * @param fields  字段信息
+     * @since 1.0.0
+     */
+    @Override
+    public void saveField(String modelId, List<FieldDTO> fields) {
+
+    }
 }

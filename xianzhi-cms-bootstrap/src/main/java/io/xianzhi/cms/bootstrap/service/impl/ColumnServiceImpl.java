@@ -16,6 +16,7 @@
 
 package io.xianzhi.cms.bootstrap.service.impl;
 
+import io.xianzhi.cms.bootstrap.model.dto.ColumnDTO;
 import io.xianzhi.cms.bootstrap.service.ColumnService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,4 +32,24 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ColumnServiceImpl implements ColumnService {
+    /**
+     * 创建栏目
+     *
+     * @param columnDTO 栏目信息
+     * @return 栏目ID
+     */
+    @Override
+    public String createColumn(ColumnDTO columnDTO) {
+        return "";
+    }
+
+    /**
+     * 更新栏目
+     *
+     * @param columnDTO 栏目信息
+     */
+    @Override
+    public void updateColumn(ColumnDTO columnDTO) {
+
+    }
 }

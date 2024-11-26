@@ -23,6 +23,7 @@ import io.xianzhi.cms.bootstrap.model.code.ModelCode;
 import io.xianzhi.cms.bootstrap.model.dto.ModelDTO;
 import io.xianzhi.cms.bootstrap.model.page.ModelPage;
 import io.xianzhi.cms.bootstrap.model.vo.ModelVO;
+import io.xianzhi.cms.bootstrap.processor.SqlProcessor;
 import io.xianzhi.cms.bootstrap.service.ModelService;
 import io.xianzhi.core.exception.BusinessException;
 import io.xianzhi.core.result.ListResult;
@@ -56,6 +57,11 @@ public class ModelServiceImpl implements ModelService {
     private final ModelBusiness modelBusiness;
 
     /**
+     * SQL处理
+     */
+    private final SqlProcessor sqlProcessor;
+
+    /**
      * 新增模型
      *
      * @param modelDTO 模型信息
@@ -67,6 +73,7 @@ public class ModelServiceImpl implements ModelService {
     public String createModel(ModelDTO modelDTO) {
         ModelDO model = checkedModelDTO(modelDTO);
         modelMapper.insert(model);
+        sqlProcessor.createTable(model.getModelTableName());
         return model.getId();
     }
 

@@ -19,6 +19,7 @@ package io.xianzhi.cms.bootstrap.controller;
 import io.xianzhi.cms.bootstrap.annotations.AuditLog;
 import io.xianzhi.cms.bootstrap.model.dto.FieldDTO;
 import io.xianzhi.cms.bootstrap.model.vo.FieldVO;
+import io.xianzhi.cms.bootstrap.service.FieldService;
 import io.xianzhi.core.result.ResponseResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -38,6 +39,11 @@ import java.util.List;
 public class FieldController {
 
     /**
+     * 字段服务
+     */
+    private final FieldService fieldService;
+
+    /**
      * 保存字段
      *
      * @param modelId 模型ID
@@ -49,6 +55,7 @@ public class FieldController {
     @PreAuthorize("@xz.hasPermission('cms:field:saveField')")
     @PostMapping("/saveField/{modelId}")
     public ResponseResult<Object> saveField(@PathVariable(value = "modelId") String modelId, @RequestBody List<FieldDTO> fields) {
+        fieldService.saveField(modelId, fields);
         return ResponseResult.ok();
     }
 
@@ -62,6 +69,7 @@ public class FieldController {
     @PreAuthorize("@xz.hasPermission('cms:field:saveField')")
     @GetMapping("/listField/{modelId}")
     public ResponseResult<List<FieldVO>> listField(@PathVariable(value = "modelId") String modelId) {
-        return ResponseResult.ok();
+        return ResponseResult.ok(fieldService.getFieldsByModelId(modelId));
     }
+
 }
