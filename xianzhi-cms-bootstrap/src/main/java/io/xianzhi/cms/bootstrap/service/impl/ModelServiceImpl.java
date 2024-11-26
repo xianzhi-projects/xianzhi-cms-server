@@ -17,15 +17,19 @@
 package io.xianzhi.cms.bootstrap.service.impl;
 
 import io.xianzhi.cms.bootstrap.business.ModelBusiness;
+import io.xianzhi.cms.bootstrap.dao.dataobj.ModelDO;
 import io.xianzhi.cms.bootstrap.dao.mapper.ModelMapper;
+import io.xianzhi.cms.bootstrap.model.code.ModelCode;
 import io.xianzhi.cms.bootstrap.model.dto.ModelDTO;
 import io.xianzhi.cms.bootstrap.model.page.ModelPage;
 import io.xianzhi.cms.bootstrap.model.vo.ModelVO;
 import io.xianzhi.cms.bootstrap.service.ModelService;
+import io.xianzhi.core.exception.BusinessException;
 import io.xianzhi.core.result.ListResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -106,6 +110,26 @@ public class ModelServiceImpl implements ModelService {
      */
     @Override
     public void distributionModel(String modelId, List<String> siteIds) {
+
+    }
+
+
+    private ModelDO checkedModelDTO(ModelDTO modelDTO) {
+        ModelDO model;
+        if (StringUtils.hasText(modelDTO.getId())) {
+            model = modelBusiness.getModelByIdOrThrow(modelDTO.getId());
+        } else {
+            model = new ModelDO();
+            if (modelMapper.existsModelByTableNameAndIdNot(modelDTO.getModelTableName(), null)) {
+                log.error("模型表名已存在,模型表名:{}", modelDTO.getModelTableName());
+                throw new BusinessException(ModelCode.MODEL_TABLE_NAME_EXIST);
+            }
+        }
+        if (modelMapper.existsModelByModelNameAndIdNot(modelDTO.getModelName(), model.getId())) {
+            log.error("模型名称已存在,模型名称:{}", modelDTO.getModelName());
+            throw new BusinessException(ModelCode.MODEL_NAME_EXIST);
+        }
+        return model;
 
     }
 }

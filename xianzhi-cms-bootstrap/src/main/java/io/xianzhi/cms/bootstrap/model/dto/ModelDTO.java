@@ -28,4 +28,19 @@ import java.io.Serializable;
  */
 @Data
 public class ModelDTO implements Serializable {
+
+    /**
+     * 模型ID
+     */
+    private String id;
+
+    /**
+     * 模型名称
+     */
+    private String modelName;
+
+    /**
+     * 模型表名称
+     */
+    private String modelTableName;
 }

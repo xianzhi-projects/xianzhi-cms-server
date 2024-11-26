@@ -17,4 +17,24 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="io.xianzhi.cms.bootstrap.dao.mapper.ModelMapper">
+
+    <select id="selectModelById" resultType="io.xianzhi.cms.bootstrap.dao.dataobj.ModelDO">
+        SELECT * FROM xz_model where id = #{modelId,jdbcType=VARCHAR} and deleted_flag = 0
+    </select>
+
+    <select id="existsModelByModelNameAndIdNot" resultType="boolean">
+        SELECT IFNULL((SELECT 1 FROM xz_model where model_name = #{modelName,jdbcType=VARCHAR} and deleted_flag = 0
+        <if test="modelId != null and modelId != ''">
+            AND id != #{modelId,jdbcType=VARCHAR}
+        </if>
+        ),0)
+    </select>
+
+    <select id="existsModelByTableNameAndIdNot" resultType="boolean">
+        SELECT IFNULL((SELECT 1 FROM xz_model where table_name = #{tableName,jdbcType=VARCHAR} and deleted_flag = 0
+        <if test="modelId != null and modelId != ''">
+            AND id != #{modelId,jdbcType=VARCHAR}
+        </if>
+        ),0)
+    </select>
 </mapper>

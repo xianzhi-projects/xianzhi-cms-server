@@ -19,6 +19,15 @@ public enum ModelCode implements Result {
      * 模型不存在
      */
     MODEL_NOT_EXIST("1000000", false, "model.not.exist"),
+    /**
+     * 模型表名称已经存在
+     */
+    MODEL_TABLE_NAME_EXIST("1000001", false, "model.table.name.exist"),
+
+    /**
+     * 模型名称已经存在
+     */
+    MODEL_NAME_EXIST("1000002", false, "model.name.exist"),
 
     ;
 

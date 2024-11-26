@@ -19,6 +19,7 @@ package io.xianzhi.cms.bootstrap.dao.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.xianzhi.cms.bootstrap.dao.dataobj.ModelDO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Optional;
 
@@ -38,5 +39,26 @@ public interface ModelMapper extends BaseMapper<ModelDO> {
      * @param modelId 模型ID
      * @return 模型信息
      */
-    Optional<ModelDO> selectModelById(String modelId);
+    Optional<ModelDO> selectModelById(@Param("modelId") String modelId);
+
+
+    /**
+     * 判断模型名称是否存在
+     *
+     * @param modelName 模型名称
+     * @param modelId   模型ID
+     * @return 是否存在
+     * @since 1.0.0
+     */
+    boolean existsModelByModelNameAndIdNot(@Param("modelName") String modelName, @Param("modelId") String modelId);
+
+    /**
+     * 判断模型表名称是否存在
+     *
+     * @param tableName 表名称
+     * @param modelId   模型ID
+     * @return 是否存在
+     * @since 1.0.0
+     */
+    boolean existsModelByTableNameAndIdNot(@Param("tableName") String tableName, @Param("modelId") String modelId);
 }
