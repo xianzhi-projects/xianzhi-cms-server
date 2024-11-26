@@ -38,9 +38,29 @@ public class ModelDTO implements Serializable {
      * 模型名称
      */
     private String modelName;
-
     /**
-     * 模型表名称
+     * 模型描述
+     */
+    private String modelDesc;
+    /**
+     * 模型表名
      */
     private String modelTableName;
+    /**
+     * 模型类型
+     */
+    private String modelType;
+    /**
+     * 是否启用标识
+     */
+    private Boolean enableFlag;
+    /**
+     * 模型排序
+     */
+    private Integer modelSort;
+
+    /**
+     * 公共模型标识
+     */
+    private Boolean commonFlag;
 }

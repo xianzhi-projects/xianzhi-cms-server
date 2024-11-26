@@ -29,6 +29,7 @@ import io.xianzhi.core.result.ListResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
@@ -62,8 +63,11 @@ public class ModelServiceImpl implements ModelService {
      * @since 1.0.0
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String createModel(ModelDTO modelDTO) {
-        return "";
+        ModelDO model = checkedModelDTO(modelDTO);
+        modelMapper.insert(model);
+        return model.getId();
     }
 
     /**
@@ -73,6 +77,7 @@ public class ModelServiceImpl implements ModelService {
      * @since 1.0.0
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void updateModel(ModelDTO modelDTO) {
 
     }
@@ -105,15 +110,21 @@ public class ModelServiceImpl implements ModelService {
      *
      * @param modelId 模型ID
      * @param siteIds 站点ID
-     * @return 响应信息
      * @since 1.0.0
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void distributionModel(String modelId, List<String> siteIds) {
 
     }
 
-
+    /**
+     * 检查模型入参
+     *
+     * @param modelDTO 模型信息入参
+     * @return 模型信息实体
+     * @since 1.0.0
+     */
     private ModelDO checkedModelDTO(ModelDTO modelDTO) {
         ModelDO model;
         if (StringUtils.hasText(modelDTO.getId())) {
@@ -124,11 +135,17 @@ public class ModelServiceImpl implements ModelService {
                 log.error("模型表名已存在,模型表名:{}", modelDTO.getModelTableName());
                 throw new BusinessException(ModelCode.MODEL_TABLE_NAME_EXIST);
             }
+            model.setModelTableName(modelDTO.getModelTableName());
         }
         if (modelMapper.existsModelByModelNameAndIdNot(modelDTO.getModelName(), model.getId())) {
             log.error("模型名称已存在,模型名称:{}", modelDTO.getModelName());
             throw new BusinessException(ModelCode.MODEL_NAME_EXIST);
         }
+        model.setModelName(modelDTO.getModelName());
+        model.setModelDesc(modelDTO.getModelDesc());
+        model.setModelSort(modelDTO.getModelSort());
+        model.setModelType(modelDTO.getModelType());
+        model.setCommonFlag(modelDTO.getCommonFlag());
         return model;
 
     }
