@@ -18,7 +18,6 @@ package io.xianzhi.cms.bootstrap.handler;
 
 import io.xianzhi.cms.bootstrap.model.XianZhiUserDetails;
 import io.xianzhi.cms.bootstrap.model.vo.TokenVO;
-import io.xianzhi.cms.bootstrap.utils.JwtUtil;
 import io.xianzhi.core.result.ResponseResult;
 import io.xianzhi.core.utils.JSONUtil;
 import io.xianzhi.core.utils.ResponseUtils;

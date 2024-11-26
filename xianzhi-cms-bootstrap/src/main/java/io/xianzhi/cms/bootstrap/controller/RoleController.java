@@ -16,9 +16,16 @@
 
 package io.xianzhi.cms.bootstrap.controller;
 
+import io.xianzhi.cms.bootstrap.annotations.AuditLog;
 import io.xianzhi.cms.bootstrap.model.dto.RoleDTO;
 import io.xianzhi.core.result.ResponseResult;
+import io.xianzhi.core.validated.Create;
+import io.xianzhi.core.validated.Update;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,7 +49,10 @@ public class RoleController {
      * @return 角色ID
      * @since 1.0.0
      */
-    public ResponseResult<String> createRole(RoleDTO roleDTO) {
+    @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:role:createRole')")
+    @PostMapping(value = "/createRole")
+    public ResponseResult<String> createRole(@RequestBody @Validated(value = Create.class) RoleDTO roleDTO) {
         return ResponseResult.ok();
     }
 
@@ -53,7 +63,10 @@ public class RoleController {
      * @return 响应信息
      * @since 1.0.0
      */
-    public ResponseResult<Object> updateRole(RoleDTO roleDTO) {
+    @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:role:updateRole')")
+    @PostMapping(value = "/updateRole")
+    public ResponseResult<Object> updateRole(@RequestBody @Validated(value = Update.class) RoleDTO roleDTO) {
         return ResponseResult.ok();
     }
 
@@ -64,7 +77,10 @@ public class RoleController {
      * @return 响应信息
      * @since 1.0.0
      */
-    public ResponseResult<Object> deletedRole(List<String> ids) {
+    @AuditLog
+    @PreAuthorize("@xz.hasPermission('cms:role:deletedRole')")
+    @PostMapping(value = "/deletedRole")
+    public ResponseResult<Object> deletedRole(@RequestBody List<String> ids) {
         return ResponseResult.ok();
     }
 }
